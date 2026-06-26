@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>バチェラーデート TikTok広告分析ツール</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#f5f5f3;
+  --color-background-tertiary:#ebebea;
+  --color-text-primary:#1a1a18;
+  --color-text-secondary:#6b6b68;
+  --color-border-tertiary:rgba(0,0,0,0.12);
+  --color-border-secondary:rgba(0,0,0,0.22);
+  --font-sans:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'SF Mono','Fira Code',monospace;
+  --border-radius-md:8px;
+  --border-radius-lg:12px;
+  --c-win-bg:#EAF3DE;--c-win-tx:#3B6D11;
+  --c-lose-bg:#FCEBEB;--c-lose-tx:#A32D2D;
+  --c-mid-bg:#FAEEDA;--c-mid-tx:#854F0B;
+  --c-af-bg:#E6F1FB;--c-af-tx:#185FA5;
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --color-background-primary:#1c1c1a;
+    --color-background-secondary:#252523;
+    --color-background-tertiary:#2e2e2b;
+    --color-text-primary:#f0f0ed;
+    --color-text-secondary:#9a9a96;
+    --color-border-tertiary:rgba(255,255,255,0.12);
+    --color-border-secondary:rgba(255,255,255,0.22);
+    --c-win-bg:#1a2e0d;--c-win-tx:#8fcf56;
+    --c-lose-bg:#2e0d0d;--c-lose-tx:#f08080;
+    --c-mid-bg:#2e1f0a;--c-mid-tx:#e8a84a;
+    --c-af-bg:#0d1e2e;--c-af-tx:#74b3f0;
+  }
+}
+html,body{height:100%;font-family:var(--font-sans);color:var(--color-text-primary);background:var(--color-background-tertiary);font-size:14px}
+.page{max-width:1100px;margin:0 auto;padding:24px 20px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.header-title{font-size:17px;font-weight:500}
+.header-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.tab-bar{display:flex;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.25rem}
+.tab{padding:8px 12px;font-size:13px;cursor:pointer;border:none;background:none;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-0.5px;white-space:nowrap}
+.tab.active{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:1rem}
+.sec{font-size:13px;font-weight:500;margin-bottom:.75rem}
+.mrow{display:grid;gap:8px;margin-bottom:1rem}
+.mc{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .9rem}
+.ml{font-size:11px;color:var(--color-text-secondary);margin-bottom:2px}
+.mv{font-size:19px;font-weight:500}
+.mv.g{color:#1D9E75}.mv.b{color:#185FA5}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:500;white-space:nowrap}
+.bw{background:var(--c-win-bg);color:var(--c-win-tx)}
+.bl{background:var(--c-lose-bg);color:var(--c-lose-tx)}
+.bm{background:var(--c-mid-bg);color:var(--c-mid-tx)}
+.baf{background:var(--c-af-bg);color:var(--c-af-tx)}
+.tbl{width:100%;border-collapse:collapse;table-layout:fixed}
+.tbl th{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-align:right;padding:6px 8px;border-bottom:0.5px solid var(--color-border-tertiary);white-space:nowrap}
+.tbl th:first-child{text-align:left}
+.tbl td{padding:7px 8px;border-bottom:0.5px solid var(--color-border-tertiary);text-align:right;font-size:12px;vertical-align:middle}
+.tbl td:first-child{text-align:left}
+.tbl tr:last-child td{border-bottom:none}
+.tbl tr:hover td{background:var(--color-background-secondary)}
+.tbl .grp-sep{border-left:1.5px solid var(--color-border-tertiary)}
+.ni{width:80px;padding:3px 6px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:12px;font-family:var(--font-sans);text-align:right}
+.ni:focus{outline:none;border-color:var(--color-text-secondary)}
+.inp{width:100%;padding:7px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;font-family:var(--font-sans)}
+.sel{width:100%;padding:7px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;font-family:var(--font-sans)}
+.ta{width:100%;padding:7px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;font-family:var(--font-sans);resize:vertical}
+.lbl{font-size:11px;color:var(--color-text-secondary);margin-bottom:3px;display:block}
+.btn{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:none;color:var(--color-text-primary)}
+.btn:hover{background:var(--color-background-secondary)}
+.btnp{background:var(--color-text-primary);color:var(--color-background-primary);border-color:var(--color-text-primary)}
+.btnp:hover{opacity:.85}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.tag{display:inline-block;font-size:11px;padding:2px 7px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:3px;margin:2px}
+.empty{text-align:center;padding:1.5rem;color:var(--color-text-secondary);font-size:13px}
+.warn-bar{background:var(--c-mid-bg);border:0.5px solid #FAC775;border-radius:var(--border-radius-md);padding:.6rem 1rem;font-size:12px;color:var(--c-mid-tx);margin-bottom:1rem;line-height:1.6;display:flex;align-items:center;gap:8px}
+.ai-box{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.9rem 1rem;font-size:13px;line-height:1.8;margin-top:.75rem}
+.prog{height:3px;background:var(--color-background-secondary);border-radius:2px;overflow:hidden;margin-top:8px}
+.progb{height:100%;background:#1D9E75;border-radius:2px;transition:width .3s}
+.prow{display:flex;align-items:center;gap:8px;padding:9px 0;border-bottom:0.5px solid var(--color-border-tertiary);flex-wrap:wrap}
+.prow:last-child{border-bottom:none}
+.pname{min-width:160px;flex:1;font-size:13px;font-weight:500}
+.pcalc{font-size:12px;color:var(--color-text-secondary);white-space:nowrap}
+/* カレンダー */
+.dr-wrap{position:relative}
+.dr-trigger{display:flex;align-items:center;gap:8px;padding:7px 12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-primary);font-size:13px;user-select:none;width:100%}
+.dr-trigger:hover{background:var(--color-background-secondary)}
+.dr-panel{display:none;position:absolute;top:calc(100% + 4px);left:0;z-index:200;background:var(--color-background-primary);border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-lg);min-width:580px;box-shadow:0 4px 24px rgba(0,0,0,.12)}
+.dr-panel.open{display:flex;flex-direction:column}
+.dr-body{display:flex}
+.dr-presets{width:108px;border-right:0.5px solid var(--color-border-tertiary);padding:8px 0;flex-shrink:0}
+.dr-preset{padding:7px 14px;font-size:12px;cursor:pointer;color:var(--color-text-secondary);white-space:nowrap}
+.dr-preset:hover{color:var(--color-text-primary);background:var(--color-background-secondary)}
+.dr-cals{display:flex;padding:12px 16px;gap:24px}
+.cal-wrap{width:196px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-nav{background:none;border:none;cursor:pointer;color:var(--color-text-secondary);font-size:16px;padding:2px 6px;border-radius:4px}
+.cal-nav:hover{background:var(--color-background-secondary)}
+.cal-title{font-size:13px;font-weight:500}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+.cal-dow{font-size:11px;color:var(--color-text-secondary);text-align:center;padding:3px 0}
+.cal-day{font-size:12px;text-align:center;padding:5px 2px;border-radius:4px;cursor:pointer;color:var(--color-text-primary)}
+.cal-day:hover{background:var(--color-background-secondary)}
+.cal-day.other{color:var(--color-text-secondary)}
+.cal-day.today{font-weight:500;color:#185FA5}
+.cal-day.sel-s,.cal-day.sel-e{background:var(--color-text-primary);color:var(--color-background-primary)}
+.cal-day.in-range{background:var(--color-background-secondary)}
+.dr-footer{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-top:0.5px solid var(--color-border-tertiary)}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="header">
+  <div>
+    <div class="header-title"><i class="ti ti-chart-bar" style="margin-right:6px;vertical-align:-2px" aria-hidden="true"></i>バチェラーデート TikTok広告分析ツール</div>
+    <div class="header-sub">シナリオ × 配信数値を突合してAIが勝敗理由を言語化します</div>
+  </div>
+</div>
+
+<!-- 期間 + 成果単価 -->
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;flex-wrap:wrap">
+  <span style="font-size:12px;color:var(--color-text-secondary);white-space:nowrap">期間</span>
+  <div class="dr-wrap" style="flex:1;max-width:300px">
+    <div class="dr-trigger" onclick="toggleCal()">
+      <i class="ti ti-calendar" aria-hidden="true"></i>
+      <span id="dr-label">期間を選択</span>
+      <i class="ti ti-chevron-down" aria-hidden="true" style="margin-left:auto;font-size:12px"></i>
+    </div>
+    <div class="dr-panel" id="dr-panel">
+      <div class="dr-body">
+        <div class="dr-presets">
+          <div class="dr-preset" onclick="applyPreset('today')">今日</div>
+          <div class="dr-preset" onclick="applyPreset('yesterday')">昨日</div>
+          <div class="dr-preset" onclick="applyPreset('7d')">過去7日間</div>
+          <div class="dr-preset" onclick="applyPreset('14d')">過去14日間</div>
+          <div class="dr-preset" onclick="applyPreset('30d')">過去30日間</div>
+          <div class="dr-preset" onclick="applyPreset('thisweek')">今週</div>
+          <div class="dr-preset" onclick="applyPreset('lastweek')">先週</div>
+          <div class="dr-preset" onclick="applyPreset('thismonth')">今月</div>
+        </div>
+        <div class="dr-cals">
+          <div class="cal-wrap">
+            <div class="cal-head">
+              <button class="cal-nav" onclick="navCal(-1,'L')" aria-label="前月">‹</button>
+              <span class="cal-title" id="ctl-L"></span>
+              <button class="cal-nav" onclick="navCal(1,'L')" aria-label="翌月">›</button>
+            </div>
+            <div class="cal-grid" id="cal-L"></div>
+          </div>
+          <div class="cal-wrap">
+            <div class="cal-head">
+              <button class="cal-nav" onclick="navCal(-1,'R')" aria-label="前月">‹</button>
+              <span class="cal-title" id="ctl-R"></span>
+              <button class="cal-nav" onclick="navCal(1,'R')" aria-label="翌月">›</button>
+            </div>
+            <div class="cal-grid" id="cal-R"></div>
+          </div>
+        </div>
+      </div>
+      <div class="dr-footer">
+        <span style="font-size:11px;color:var(--color-text-secondary)"><i class="ti ti-world" aria-hidden="true"></i> UTC+09:00</span>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span id="dr-sel-lbl" style="font-size:12px;color:var(--color-text-secondary)"></span>
+          <button class="btn" onclick="closeCal()">キャンセル</button>
+          <button class="btn btnp" onclick="confirmCal()">確認</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;align-items:center;gap:6px;background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:6px 12px">
+    <i class="ti ti-currency-yen" aria-hidden="true" style="color:var(--color-text-secondary);font-size:15px"></i>
+    <span style="font-size:12px;color:var(--color-text-secondary);white-space:nowrap">成果単価</span>
+    <input type="number" id="global-unit-price" class="ni" style="width:90px" placeholder="例: 3000" min="0" step="100" oninput="updateUnitPrice(this.value)">
+    <span style="font-size:12px;color:var(--color-text-secondary)">円 / 会員登録</span>
+  </div>
+
+  <button class="btn" onclick="loadSample()" style="white-space:nowrap">サンプル読込</button>
+</div>
+
+<div id="unit-price-notice" class="warn-bar">
+  <i class="ti ti-alert-triangle" aria-hidden="true"></i>
+  <span><strong>成果単価が未設定です。</strong>上部の入力欄に1会員登録あたりの単価（円）を入力すると、売上・利益・ROASが自動計算されます。</span>
+</div>
+
+<div class="tab-bar">
+  <button class="tab active" onclick="showTab('dash')" id="t-dash">ダッシュボード</button>
+  <button class="tab" onclick="showTab('reg')" id="t-reg">会員登録入力</button>
+  <button class="tab" onclick="showTab('scenario')" id="t-scenario">シナリオ</button>
+  <button class="tab" onclick="showTab('analysis')" id="t-analysis">AI分析</button>
+</div>
+
+<!-- ダッシュボード -->
+<div id="tab-dash">
+  <div class="mrow" style="grid-template-columns:repeat(5,1fr)">
+    <div class="mc"><div class="ml">Cost</div><div class="mv" id="d-cost">-</div></div>
+    <div class="mc"><div class="ml">会員登録数</div><div class="mv b" id="d-reg">-</div></div>
+    <div class="mc"><div class="ml">売上合計</div><div class="mv" id="d-rev">-</div></div>
+    <div class="mc"><div class="ml">利益合計</div><div class="mv g" id="d-profit">-</div></div>
+    <div class="mc"><div class="ml">ROAS</div><div class="mv g" id="d-roas">-</div></div>
+  </div>
+  <div class="mrow" style="grid-template-columns:repeat(5,1fr)">
+    <div class="mc"><div class="ml">インストール</div><div class="mv b" id="d-install">-</div></div>
+    <div class="mc"><div class="ml">平均CTR</div><div class="mv" id="d-ctr">-</div></div>
+    <div class="mc"><div class="ml">平均CPI</div><div class="mv" id="d-cpi">-</div></div>
+    <div class="mc"><div class="ml">会員登録単価</div><div class="mv" id="d-regcpa">-</div></div>
+    <div class="mc"><div class="ml">成果単価</div><div class="mv" id="d-unitp">未設定</div></div>
+  </div>
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.75rem">
+      <div class="sec" style="margin:0">パフォーマンス一覧</div>
+      <span id="period-label" style="font-size:12px;color:var(--color-text-secondary)"></span>
+    </div>
+    <div style="overflow-x:auto">
+    <table class="tbl" style="min-width:900px">
+      <thead>
+        <tr>
+          <th style="text-align:left;width:148px">広告名</th>
+          <th>Cost</th><th>Imp</th><th>CPM</th><th>Click</th><th>CTR</th><th>CPC</th>
+          <th class="grp-sep">Install</th><th>CPI</th><th>アプリ<br>インストール率</th>
+          <th class="grp-sep">会員<br>登録数</th><th>会員<br>登録単価</th><th>会員<br>登録率</th>
+          <th class="grp-sep">売上</th><th>利益</th><th>ROAS</th>
+          <th>判定</th>
+        </tr>
+      </thead>
+      <tbody id="main-tbody">
+        <tr><td colspan="17"><div class="empty">サンプルを読み込むか、データを入力してください</div></td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="margin-top:10px;display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn btnp" onclick="showTab('analysis')">AI分析を実行 ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- 会員登録入力 -->
+<div id="tab-reg" style="display:none">
+  <div class="warn-bar"><i class="ti ti-pencil" aria-hidden="true"></i> AF連携完了まで手動入力。登録数を入れると <strong>会員登録単価・会員登録率・売上・利益・ROAS</strong> を自動計算します。</div>
+  <div class="card"><div class="sec">広告別 会員登録数入力</div><div id="reg-list"><div class="empty">先にデータを読み込んでください</div></div></div>
+</div>
+
+<!-- シナリオ -->
+<div id="tab-scenario" style="display:none">
+  <div class="card">
+    <div class="sec">シナリオ登録</div>
+    <div class="frow">
+      <div><label class="lbl">広告名（TikTok Ads Managerと同じ名称）</label><input class="inp" id="s-name" placeholder="BD_感情訴求_v1"></div>
+      <div><label class="lbl">訴求軸</label>
+        <select class="sel" id="s-axis"><option>価格訴求</option><option>感情訴求</option><option>機能訴求</option><option>社会的証明</option><option>限定・希少性</option><option>課題解決</option><option>比較訴求</option><option>その他</option></select>
+      </div>
+    </div>
+    <div class="frow">
+      <div><label class="lbl">冒頭フック（最初3秒）</label><input class="inp" id="s-hook" placeholder="「本気の出会いを諦めてた...」モノローグ"></div>
+      <div><label class="lbl">CTA文言</label><input class="inp" id="s-cta" placeholder="今すぐダウンロード"></div>
+    </div>
+    <div class="frow">
+      <div><label class="lbl">ターゲット</label><input class="inp" id="s-target" placeholder="30代女性・婚活中"></div>
+      <div><label class="lbl">動画尺</label>
+        <select class="sel" id="s-dur"><option>〜15秒</option><option>16〜30秒</option><option>31〜60秒</option><option>60秒〜</option></select>
+      </div>
+    </div>
+    <div style="margin-bottom:10px">
+      <label class="lbl">シナリオ構成（概要）</label>
+      <textarea class="ta" id="s-body" placeholder="フック → 展開 → CTAの流れを簡潔に" style="min-height:56px"></textarea>
+    </div>
+    <div style="margin-bottom:12px">
+      <label class="lbl">シナリオ全文 <span style="color:var(--color-text-secondary);font-weight:400">（台本・ナレーション・テロップをそのまま貼り付け）</span></label>
+      <textarea class="ta" id="s-full" placeholder="【0秒〜3秒】&#10;テロップ：「婚活アプリ、もう諦めようとしてた」&#10;ナレーション：なし&#10;&#10;【3秒〜10秒】&#10;テロップ：「でもバチェラーデートで変わった」" style="min-height:200px;font-size:12px;line-height:1.7"></textarea>
+    </div>
+    <button class="btn btnp" onclick="addScenario()">登録する</button>
+  </div>
+  <div id="s-list"></div>
+</div>
+
+<!-- AI分析 -->
+<div id="tab-analysis" style="display:none">
+  <div class="card"><div class="sec">分析対象を選択</div><div id="ana-sel"><div class="empty">先にデータを読み込んでください</div></div></div>
+  <div id="ana-result"></div>
+</div>
+
+<script>
+let ads=[], scenarios={}, selAds=new Set(), unitPrice=null;
+let calLY,calLM,calRY,calRM;
+let pickStart=null,pickEnd=null,hovDate=null,picking=false;
+let confStart=null,confEnd=null;
+const DOW=['日','月','火','水','木','金','土'];
+const MONTHS=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+
+function today0(){const d=new Date();d.setHours(0,0,0,0);return d;}
+function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
+function fmtD(d){return d?`${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`:''}
+function sameDay(a,b){return a&&b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate();}
+
+function initCalMonths(){
+  const t=today0();calRY=t.getFullYear();calRM=t.getMonth();
+  const p=new Date(t.getFullYear(),t.getMonth()-1,1);calLY=p.getFullYear();calLM=p.getMonth();
+}
+function renderCals(){
+  renderOneCal('L',calLY,calLM);renderOneCal('R',calRY,calRM);
+  document.getElementById('ctl-L').textContent=`${calLY} ${MONTHS[calLM]}`;
+  document.getElementById('ctl-R').textContent=`${calRY} ${MONTHS[calRM]}`;
+  const s=pickStart,e=pickEnd||hovDate;
+  const lo=s&&e&&s>e?e:s,hi=s&&e&&s>e?s:e;
+  document.getElementById('dr-sel-lbl').textContent=(lo&&hi&&!sameDay(lo,hi))?`${fmtD(lo)} 〜 ${fmtD(hi)}`:lo?fmtD(lo):'';
+}
+function renderOneCal(side,y,m){
+  const grid=document.getElementById('cal-'+side);
+  const t=today0();const first=new Date(y,m,1);const last=new Date(y,m+1,0);
+  let h=DOW.map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  const sd=first.getDay();
+  for(let i=0;i<sd;i++){const d=new Date(y,m,1-sd+i);h+=cell(d,true);}
+  for(let dd=1;dd<=last.getDate();dd++){h+=cell(new Date(y,m,dd),false);}
+  const ed=last.getDay();
+  for(let i=1;i<7-ed;i++){h+=cell(new Date(y,m+1,i),true);}
+  grid.innerHTML=h;
+}
+function cell(d,other){
+  const t=today0();const s=pickStart,e=pickEnd||hovDate;
+  const lo=s&&e&&s>e?e:s,hi=s&&e&&s>e?s:e;
+  const isSel=sameDay(d,s)||sameDay(d,pickEnd);
+  const inR=lo&&hi&&d>lo&&d<hi;
+  const isT=sameDay(d,t);
+  let cls='cal-day'+(other?' other':'')+(isSel?' sel-s':inR?' in-range':'')+(isT&&!isSel?' today':'');
+  return `<div class="${cls}" onclick="pickDay(${d.getFullYear()},${d.getMonth()},${d.getDate()})" onmouseover="hov(${d.getFullYear()},${d.getMonth()},${d.getDate()})">${d.getDate()}</div>`;
+}
+function pickDay(y,m,d){
+  const c=new Date(y,m,d);
+  if(!picking||!pickStart){pickStart=c;pickEnd=null;picking=true;}
+  else{if(c<pickStart){pickEnd=pickStart;pickStart=c;}else{pickEnd=c;}picking=false;}
+  renderCals();
+}
+function hov(y,m,d){if(picking&&pickStart){hovDate=new Date(y,m,d);renderCals();}}
+function navCal(dir,side){
+  if(side==='L'){calLM+=dir;if(calLM<0){calLM=11;calLY--;}if(calLM>11){calLM=0;calLY++;}}
+  else{calRM+=dir;if(calRM<0){calRM=11;calRY--;}if(calRM>11){calRM=0;calRY++;}}
+  renderCals();
+}
+function applyPreset(p){
+  const t=today0();let s,e;
+  if(p==='today'){s=t;e=t;}
+  else if(p==='yesterday'){s=addDays(t,-1);e=addDays(t,-1);}
+  else if(p==='7d'){s=addDays(t,-6);e=t;}
+  else if(p==='14d'){s=addDays(t,-13);e=t;}
+  else if(p==='30d'){s=addDays(t,-29);e=t;}
+  else if(p==='thisweek'){const w=new Date(t);w.setDate(t.getDate()-t.getDay());s=w;e=t;}
+  else if(p==='lastweek'){const lw=new Date(t);lw.setDate(t.getDate()-t.getDay()-7);s=lw;e=addDays(lw,6);}
+  else if(p==='thismonth'){s=new Date(t.getFullYear(),t.getMonth(),1);e=t;}
+  pickStart=s;pickEnd=e;picking=false;hovDate=null;
+  calLY=s.getFullYear();calLM=s.getMonth();
+  const nx=new Date(s.getFullYear(),s.getMonth()+1,1);calRY=nx.getFullYear();calRM=nx.getMonth();
+  renderCals();
+}
+function toggleCal(){const p=document.getElementById('dr-panel');if(p.classList.contains('open')){p.classList.remove('open');}else{initCalMonths();renderCals();p.classList.add('open');}}
+function closeCal(){document.getElementById('dr-panel').classList.remove('open');}
+function confirmCal(){
+  if(!pickStart){closeCal();return;}
+  const s=pickStart,e=pickEnd||pickStart;
+  const lo=s>e?e:s,hi=s>e?s:e;
+  confStart=lo;confEnd=hi;
+  const lbl=sameDay(lo,hi)?fmtD(lo):`${fmtD(lo)} 〜 ${fmtD(hi)}`;
+  document.getElementById('dr-label').textContent=lbl;
+  document.getElementById('period-label').textContent=lbl;
+  closeCal();
+  if(ads.length) renderDash();
+}
+document.addEventListener('click',e=>{
+  const w=document.querySelector('.dr-wrap');
+  if(w&&!w.contains(e.target)) closeCal();
+});
+
+function updateUnitPrice(val){
+  const v=parseFloat(val);
+  unitPrice=isNaN(v)||val===''?null:v;
+  document.getElementById('d-unitp').textContent=unitPrice!=null?'¥'+Math.round(unitPrice).toLocaleString()+'／登録':'未設定';
+  document.getElementById('unit-price-notice').style.display=unitPrice!=null?'none':'flex';
+  ads.forEach(calcDerived);
+  renderDash();
+  if(document.getElementById('tab-reg').style.display!=='none') renderRegTab();
+}
+
+function fmt(n){return n==null||isNaN(n)?'-':Math.round(n).toLocaleString()}
+function fmtp(n){return n==null||isNaN(n)||n===0?'-':n.toFixed(1)+'%'}
+function fmtr(n){return n==null||isNaN(n)?'-':n.toFixed(2)+'x'}
+
+function calcDerived(a){
+  a.cpm=a.impressions>0?a.spend/a.impressions*1000:0;
+  a.ctr=a.impressions>0?a.clicks/a.impressions*100:0;
+  a.cpc=a.clicks>0?a.spend/a.clicks:0;
+  a.cpi=a.installs>0?a.spend/a.installs:0;
+  a.install_rate=a.clicks>0?a.installs/a.clicks*100:0;
+  const reg=a.registrations!=null?a.registrations:0;
+  a.reg_cpa=reg>0?a.spend/reg:null;
+  a.reg_rate=reg>0&&a.clicks>0?reg/a.clicks*100:null;
+  a.revenue=unitPrice!=null&&reg>0?unitPrice*reg:null;
+  a.profit=a.revenue!=null?a.revenue-a.spend:null;
+  a.roas=a.revenue!=null&&a.spend>0?a.revenue/a.spend:null;
+}
+
+function judge(a){
+  const vals=ads.filter(x=>x.reg_rate!=null).map(x=>x.reg_rate);
+  if(!vals.length) return 'mid';
+  const avg=vals.reduce((s,v)=>s+v,0)/vals.length;
+  if(a.reg_rate==null) return 'mid';
+  return a.reg_rate>=avg*1.25?'win':a.reg_rate<=avg*0.7?'lose':'mid';
+}
+
+function showTab(t){
+  ['dash','reg','scenario','analysis'].forEach(id=>{
+    document.getElementById('tab-'+id).style.display=id===t?'block':'none';
+    document.getElementById('t-'+id).classList.toggle('active',id===t);
+  });
+  if(t==='reg') renderRegTab();
+  if(t==='scenario') renderSList();
+  if(t==='analysis') renderAnaSel();
+}
+
+function loadSample(){
+  ads=[
+    {id:'ad001',name:'BD_価格訴求_v1',spend:120000,impressions:800000,clicks:9600,installs:480,registrations:null,axis:'価格訴求',hook:'「今なら初月無料！」冒頭テロップ',cta:'無料でダウンロード',target:'20〜30代全般',dur:'〜15秒',body:'価格メリットを全面に。無料期間を強調しDLハードルを下げる構成。',fullScript:''},
+    {id:'ad002',name:'BD_感情訴求_v1',spend:95000,impressions:620000,clicks:9300,installs:744,registrations:null,axis:'感情訴求',hook:'「本気の出会いを諦めてた...」モノローグ',cta:'私も始める',target:'30〜40代女性',dur:'16〜30秒',body:'婚活に疲れた女性の共感ストーリー。感動的なラスト。',fullScript:''},
+    {id:'ad003',name:'BD_機能訴求_v1',spend:80000,impressions:550000,clicks:5500,installs:220,registrations:null,axis:'機能訴求',hook:'「5つの安心機能を紹介」テロップ',cta:'機能を確認する',target:'30〜50代男性',dur:'31〜60秒',body:'本人確認・運営監視など安全機能を比較表で紹介。専門用語多め。',fullScript:''},
+    {id:'ad004',name:'BD_UGC風_v1',spend:110000,impressions:920000,clicks:18400,installs:1472,registrations:null,axis:'社会的証明',hook:'「正直に言います、出会えました」ユーザー風',cta:'私も試してみる',target:'18〜35歳全般',dur:'16〜30秒',body:'リアルユーザー風の語り口でマッチング体験談。デメリットも言及してから長所を強調。',fullScript:''},
+    {id:'ad005',name:'BD_限定訴求_v1',spend:60000,impressions:400000,clicks:4000,installs:160,registrations:null,axis:'限定・希少性',hook:'「残り登録枠わずか」カウントダウン',cta:'今すぐ確保',target:'衝動層全般',dur:'〜15秒',body:'残り枠カウントダウン演出。急かすBGM。商品説明は薄め。',fullScript:''},
+  ];
+  ads.forEach(calcDerived);
+  if(!confStart){
+    const t=today0(),lo=addDays(t,-29);
+    confStart=lo;confEnd=t;
+    const lbl=`${fmtD(lo)} 〜 ${fmtD(t)}`;
+    document.getElementById('dr-label').textContent=lbl;
+    document.getElementById('period-label').textContent=lbl;
+  }
+  renderDash();renderRegTab();renderSList();renderAnaSel();
+}
+
+function renderDash(){
+  const ts=ads.reduce((s,a)=>s+a.spend,0);
+  const ti=ads.reduce((s,a)=>s+(a.installs||0),0);
+  const tr=ads.filter(a=>a.registrations!=null).reduce((s,a)=>s+(a.registrations||0),0);
+  const tv=ads.filter(a=>a.revenue!=null).reduce((s,a)=>s+a.revenue,0);
+  const tp=ads.filter(a=>a.profit!=null).reduce((s,a)=>s+a.profit,0);
+  const roas=ts>0&&tv>0?tv/ts:null;
+  const ac=ads.filter(a=>a.ctr>0);
+  const avgCtr=ac.length?ac.reduce((s,a)=>s+a.ctr,0)/ac.length:0;
+  const ic=ads.filter(a=>a.cpi>0);
+  const avgCpi=ic.length?ic.reduce((s,a)=>s+a.cpi,0)/ic.length:0;
+  const rc=ads.filter(a=>a.reg_cpa!=null);
+  const avgRegCpa=rc.length?rc.reduce((s,a)=>s+a.reg_cpa,0)/rc.length:0;
+  document.getElementById('d-cost').textContent='¥'+Math.round(ts).toLocaleString();
+  document.getElementById('d-install').textContent=ti>0?ti.toLocaleString():'-';
+  document.getElementById('d-reg').textContent=tr>0?tr.toLocaleString()+'件':'手動入力待ち';
+  document.getElementById('d-rev').textContent=tv>0?'¥'+Math.round(tv).toLocaleString():'-';
+  document.getElementById('d-profit').textContent=ads.some(a=>a.profit!=null)?'¥'+Math.round(tp).toLocaleString():'-';
+  document.getElementById('d-roas').textContent=fmtr(roas);
+  document.getElementById('d-ctr').textContent=fmtp(avgCtr);
+  document.getElementById('d-cpi').textContent=avgCpi>0?'¥'+Math.round(avgCpi).toLocaleString():'-';
+  document.getElementById('d-regcpa').textContent=avgRegCpa>0?'¥'+Math.round(avgRegCpa).toLocaleString():'-';
+  const tb=document.getElementById('main-tbody');
+  if(!ads.length){tb.innerHTML='<tr><td colspan="17"><div class="empty">データなし</div></td></tr>';return;}
+  const noPrice=unitPrice==null;
+  tb.innerHTML=ads.map(a=>{
+    const j=judge(a);
+    const bc=j==='win'?'bw':j==='lose'?'bl':'bm';
+    const bt=j==='win'?'勝ち':j==='lose'?'負け':'要観察';
+    const hasI=a.installs>0,hasR=a.registrations!=null&&a.registrations>0;
+    const nd='<span style="color:var(--color-text-secondary)">-</span>';
+    const np='<span style="color:var(--color-text-secondary);font-size:11px">単価未設定</span>';
+    const revTx=a.revenue!=null?'¥'+Math.round(a.revenue).toLocaleString():noPrice?np:nd;
+    const profTx=a.profit!=null?(a.profit>=0?'¥'+Math.round(a.profit).toLocaleString():'<span style="color:#E24B4A">¥'+Math.round(a.profit).toLocaleString()+'</span>'):noPrice?np:nd;
+    const roasTx=a.roas!=null?fmtr(a.roas):noPrice?np:nd;
+    return `<tr>
+      <td style="max-width:146px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${a.name}">${a.name}<br><span class="tag">${a.axis||''}</span></td>
+      <td>¥${Math.round(a.spend).toLocaleString()}</td>
+      <td>${Math.round(a.impressions).toLocaleString()}</td>
+      <td>¥${Math.round(a.cpm).toLocaleString()}</td>
+      <td>${Math.round(a.clicks).toLocaleString()}</td>
+      <td>${fmtp(a.ctr)}</td>
+      <td>¥${Math.round(a.cpc).toLocaleString()}</td>
+      <td class="grp-sep">${hasI?a.installs.toLocaleString():'<span class="badge baf">AF待ち</span>'}</td>
+      <td>${hasI?'¥'+Math.round(a.cpi).toLocaleString():nd}</td>
+      <td>${hasI?fmtp(a.install_rate):nd}</td>
+      <td class="grp-sep">${hasR?a.registrations.toLocaleString():'<span style="color:var(--color-text-secondary)">入力待ち</span>'}</td>
+      <td>${hasR&&a.reg_cpa!=null?'¥'+Math.round(a.reg_cpa).toLocaleString():nd}</td>
+      <td>${fmtp(a.reg_rate)}</td>
+      <td class="grp-sep">${revTx}</td>
+      <td>${profTx}</td>
+      <td>${roasTx}</td>
+      <td><span class="badge ${bc}">${bt}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderRegTab(){
+  const el=document.getElementById('reg-list');
+  if(!ads.length){el.innerHTML='<div class="empty">先にデータを読み込んでください</div>';return;}
+  el.innerHTML=ads.map(a=>`
+    <div class="prow">
+      <div class="pname">${a.name}<br><span class="tag">${a.axis||''}</span></div>
+      <div class="pcalc">Click: ${Math.round(a.clicks).toLocaleString()}</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+        <span style="font-size:12px;color:var(--color-text-secondary)">会員登録数</span>
+        <input type="number" class="ni" id="r-${a.id}" value="${a.registrations!=null?a.registrations:''}" placeholder="入力" min="0" step="1" oninput="saveReg('${a.id}',this.value)">
+        <span style="font-size:12px;color:var(--color-text-secondary)">単価: <strong id="rcpa-${a.id}">${a.reg_cpa!=null?'¥'+Math.round(a.reg_cpa).toLocaleString():'-'}</strong></span>
+        <span style="font-size:12px;color:var(--color-text-secondary)">登録率: <strong id="rrate-${a.id}">${a.reg_rate!=null?a.reg_rate.toFixed(1)+'%':'-'}</strong></span>
+        <span style="font-size:12px;color:var(--color-text-secondary)">売上: <strong id="rev-${a.id}">${a.revenue!=null?'¥'+Math.round(a.revenue).toLocaleString():unitPrice!=null?'-':'（単価未設定）'}</strong></span>
+        <span style="font-size:12px;color:var(--color-text-secondary)">ROAS: <strong id="roas-${a.id}">${fmtr(a.roas)}</strong></span>
+      </div>
+    </div>`).join('');
+}
+
+function saveReg(id,val){
+  const a=ads.find(x=>x.id===id);if(!a) return;
+  const v=parseInt(val,10);a.registrations=isNaN(v)||val===''?null:v;
+  calcDerived(a);
+  const upd=(sid,txt)=>{const e=document.getElementById(sid);if(e) e.textContent=txt;};
+  upd('rcpa-'+id, a.reg_cpa!=null?'¥'+Math.round(a.reg_cpa).toLocaleString():'-');
+  upd('rrate-'+id,a.reg_rate!=null?a.reg_rate.toFixed(1)+'%':'-');
+  upd('rev-'+id,  a.revenue!=null?'¥'+Math.round(a.revenue).toLocaleString():unitPrice!=null?'-':'（単価未設定）');
+  upd('roas-'+id, fmtr(a.roas));
+  renderDash();
+}
+
+function addScenario(){
+  const name=document.getElementById('s-name').value.trim();
+  if(!name){alert('広告名を入力してください');return;}
+  scenarios[name]={axis:document.getElementById('s-axis').value,hook:document.getElementById('s-hook').value,cta:document.getElementById('s-cta').value,target:document.getElementById('s-target').value,dur:document.getElementById('s-dur').value,body:document.getElementById('s-body').value,fullScript:document.getElementById('s-full').value};
+  const a=ads.find(x=>x.name===name);if(a) Object.assign(a,scenarios[name]);
+  renderSList();renderDash();
+  ['s-name','s-hook','s-cta','s-target','s-body','s-full'].forEach(id=>document.getElementById(id).value='');
+}
+
+function renderSList(){
+  const el=document.getElementById('s-list');
+  const keys=Object.keys(scenarios);
+  if(!keys.length){el.innerHTML='';return;}
+  el.innerHTML=keys.map(k=>{
+    const s=scenarios[k];const a=ads.find(x=>x.name===k);const j=a?judge(a):'mid';
+    const bc=j==='win'?'bw':j==='lose'?'bl':'bm';
+    const hasFS=s.fullScript&&s.fullScript.trim().length>0;
+    return `<div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px">
+        <div style="font-weight:500">${k} <span class="badge ${bc}" style="margin-left:6px">${j==='win'?'勝ち':j==='lose'?'負け':'要観察'}</span></div>
+        <button class="btn" style="font-size:11px;padding:3px 8px" onclick="delScenario('${k}')">削除</button>
+      </div>
+      <div style="margin-bottom:6px"><span class="tag">${s.axis}</span><span class="tag">${s.dur}</span><span class="tag">${s.target}</span></div>
+      <div style="font-size:12px;line-height:1.7"><strong>フック:</strong> ${s.hook||'未設定'}</div>
+      <div style="font-size:12px;line-height:1.7;margin-bottom:6px"><strong>CTA:</strong> ${s.cta||'未設定'}</div>
+      ${s.body?`<div style="font-size:12px;color:var(--color-text-secondary);margin-bottom:8px">${s.body}</div>`:''}
+      ${hasFS?`<div style="border-top:0.5px solid var(--color-border-tertiary);padding-top:8px;margin-top:4px"><div style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin-bottom:6px">シナリオ全文</div><pre style="font-size:12px;line-height:1.8;white-space:pre-wrap;word-break:break-word;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:10px;color:var(--color-text-primary);font-family:var(--font-sans);margin:0">${s.fullScript.replace(/</g,'&lt;')}</pre></div>`:`<div style="font-size:11px;color:var(--color-text-secondary)">シナリオ全文: 未登録</div>`}
+    </div>`;
+  }).join('');
+}
+function delScenario(k){delete scenarios[k];renderSList();}
+
+function renderAnaSel(){
+  const el=document.getElementById('ana-sel');
+  if(!ads.length){el.innerHTML='<div class="empty">先にデータを読み込んでください</div>';return;}
+  el.innerHTML=ads.map(a=>{
+    const j=judge(a);const bc=j==='win'?'bw':j==='lose'?'bl':'bm';
+    return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:0.5px solid var(--color-border-tertiary)">
+      <input type="checkbox" id="sel-${a.id}" onchange="toggleSel('${a.id}')" style="width:15px;height:15px;cursor:pointer">
+      <label for="sel-${a.id}" style="flex:1;cursor:pointer">${a.name}</label>
+      <span class="tag">${a.axis||'シナリオ未登録'}</span>
+      <span class="badge ${bc}">${j==='win'?'勝ち':j==='lose'?'負け':'要観察'}</span>
+      <span style="font-size:11px;color:var(--color-text-secondary)">登録率 ${a.reg_rate!=null?a.reg_rate.toFixed(1)+'%':'未入力'} / ROAS ${fmtr(a.roas)}</span>
+    </div>`;
+  }).join('')+`<div style="margin-top:12px;display:flex;gap:8px">
+    <button class="btn" onclick="selAll()">全選択</button>
+    <button class="btn btnp" onclick="runAI()">AIが勝敗理由を分析する ↗</button>
+  </div>`;
+}
+function toggleSel(id){selAds.has(id)?selAds.delete(id):selAds.add(id);}
+function selAll(){ads.forEach(a=>{selAds.add(a.id);const c=document.getElementById('sel-'+a.id);if(c)c.checked=true;});}
+
+async function runAI(){
+  const targets=ads.filter(a=>selAds.has(a.id));
+  if(!targets.length){alert('広告を選択してください');return;}
+  const el=document.getElementById('ana-result');
+  el.innerHTML=`<div class="card"><div style="color:var(--color-text-secondary);font-size:13px"><i class="ti ti-brain" style="margin-right:4px" aria-hidden="true"></i>AIが数値×シナリオを突合して分析中...</div><div class="prog"><div class="progb" id="pb" style="width:0%"></div></div></div>`;
+  let p=0;const pb=document.getElementById('pb');
+  const ti=setInterval(()=>{p=Math.min(p+2,88);pb.style.width=p+'%';},200);
+  const period=confStart?`${fmtD(confStart)} 〜 ${fmtD(confEnd)}`:'未指定';
+  const body=targets.map(a=>`
+【${a.name}】
+訴求軸:${a.axis||'未登録'} / フック:${a.hook||'未登録'} / CTA:${a.cta||'未登録'}
+ターゲット:${a.target||'未登録'} / 尺:${a.dur||'未登録'}
+シナリオ概要:${a.body||'未登録'}
+${a.fullScript?'シナリオ全文:\n'+a.fullScript:''}
+--- 数値 (${period}) ---
+Cost:¥${Math.round(a.spend).toLocaleString()} / Imp:${Math.round(a.impressions).toLocaleString()} / CPM:¥${Math.round(a.cpm).toLocaleString()}
+Click:${Math.round(a.clicks).toLocaleString()} / CTR:${fmtp(a.ctr)} / CPC:¥${Math.round(a.cpc).toLocaleString()}
+Install:${a.installs>0?a.installs:'未取得'} / CPI:${a.installs>0?'¥'+Math.round(a.cpi).toLocaleString():'-'} / アプリインストール率:${fmtp(a.install_rate)}
+会員登録数:${a.registrations!=null?a.registrations:'未入力'} / 会員登録単価:${a.reg_cpa!=null?'¥'+Math.round(a.reg_cpa).toLocaleString():'-'} / 会員登録率:${fmtp(a.reg_rate)}
+成果単価:${unitPrice!=null?'¥'+unitPrice+'／登録':'未設定'}
+売上:${a.revenue!=null?'¥'+Math.round(a.revenue).toLocaleString():'-'} / 利益:${a.profit!=null?'¥'+Math.round(a.profit).toLocaleString():'-'} / ROAS:${fmtr(a.roas)}
+判定:${judge(a)==='win'?'勝ち':judge(a)==='lose'?'負け':'要観察'}
+`).join('\n---\n');
+
+  const prompt=`あなたはTikTok広告のクリエイティブ分析専門家です。バチェラーデート（婚活マッチングアプリ）の広告データを分析してください。シナリオ全文が提供されている場合は、セリフやテロップの具体的な表現も踏まえて分析してください。
+
+会員登録率（会員登録数÷クリック数）を主KPIとして勝敗判定してください。
+
+各広告を以下の形式で出力してください：
+
+## [広告名]
+**判定**: 勝ち / 負け / 要観察
+**一言核心**:（15字以内）
+**ファネル分析**:
+- CTR（フック評価）:
+- 会員登録率（訴求×ターゲット評価）:
+- ROAS（収益性評価）:
+**勝因 / 敗因**: シナリオの具体的な表現・構成と数値を紐付けて記述
+**次のPDCAアクション**: 具体的に次に試すべきこと
+
+最後に「クリエイティブ共通インサイト」として全体から見えたパターンを3点。
+
+--- データ ---
+${body}`;
+
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-6',max_tokens:2000,messages:[{role:'user',content:prompt}]})});
+    const data=await res.json();
+    clearInterval(ti);pb.style.width='100%';
+    const txt=data.content?.map(b=>b.text||'').join('')||'エラーが発生しました';
+    const html=txt
+      .replace(/## (.+)/g,'<h3 style="font-size:14px;font-weight:500;margin:1.2rem 0 .4rem;padding-top:1rem;border-top:0.5px solid var(--color-border-tertiary)">$1</h3>')
+      .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+      .replace(/^- (.+)/gm,'<li style="margin-left:1.2rem;font-size:12px;line-height:1.8">$1</li>')
+      .replace(/\n/g,'<br>');
+    el.innerHTML=`<div class="card"><div style="display:flex;justify-content:space-between;margin-bottom:.75rem"><div class="sec" style="margin:0">AI分析レポート</div><span style="font-size:11px;color:var(--color-text-secondary)">${period} / ${new Date().toLocaleDateString('ja-JP')} 生成</span></div><div class="ai-box">${html}</div></div>`;
+  }catch(e){
+    clearInterval(ti);
+    el.innerHTML=`<div class="card"><div style="color:#E24B4A;font-size:13px">エラー: ${e.message}</div></div>`;
+  }
+}
+</script>
+</body>
+</html>
