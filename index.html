@@ -8,17 +8,93 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#f4f4f2;--card:#fff;--sub:#f8f8f6;--text:#171717;--muted:#6b6b68;--bd:rgba(0,0,0,.14);--bd2:rgba(0,0,0,.26);--win-bg:#EAF3DE;--win:#3B6D11;--lose-bg:#FCEBEB;--lose:#A32D2D;--mid-bg:#FAEEDA;--mid:#854F0B;--blue-bg:#E6F1FB;--blue:#185FA5;--r:12px}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px}.page{max-width:1320px;margin:0 auto;padding:22px 18px}.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid var(--bd);padding-bottom:14px;margin-bottom:14px}.title{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}.sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6}.right-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.btn{border:1px solid var(--bd2);border-radius:9px;background:#fff;color:var(--text);padding:8px 12px;cursor:pointer;font-size:13px;white-space:nowrap}.btn:hover{background:var(--sub)}.btnp{background:#111;color:#fff;border-color:#111}.btnblue{background:var(--blue-bg);color:var(--blue);border-color:#9cc5e8;font-weight:700}.toolbar{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:10px;margin-bottom:12px}.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:15px;margin-bottom:14px}.mini-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:10px}.lbl{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}.inp,.sel,.ta{width:100%;border:1px solid var(--bd2);border-radius:9px;background:#fff;color:var(--text);padding:8px 10px;font-family:inherit;font-size:13px}.ta{min-height:120px;resize:vertical;line-height:1.7}.tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin-bottom:14px;overflow:auto}.tab{border:0;background:transparent;padding:10px 13px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}.tab.active{color:var(--text);font-weight:700;border-bottom-color:var(--text)}.grid{display:grid;gap:10px}.kpis{grid-template-columns:repeat(6,1fr)}.kpi{background:var(--sub);border-radius:10px;padding:12px}.kl{font-size:11px;color:var(--muted);margin-bottom:4px}.kv{font-size:20px;font-weight:700}.sec{font-weight:700;margin-bottom:10px}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}.tblwrap{overflow:auto}.tbl{width:100%;border-collapse:collapse;min-width:1320px}.tbl th{font-size:11px;text-align:right;color:var(--muted);font-weight:700;padding:7px 8px;border-bottom:1px solid var(--bd);white-space:nowrap}.tbl th:first-child,.tbl td:first-child{text-align:left}.tbl td{font-size:12px;text-align:right;padding:8px;border-bottom:1px solid var(--bd);vertical-align:top}.tbl tr:hover td{background:var(--sub)}.badge{display:inline-block;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:700}.bw{background:var(--win-bg);color:var(--win)}.bl{background:var(--lose-bg);color:var(--lose)}.bm{background:var(--mid-bg);color:var(--mid)}.bb{background:var(--blue-bg);color:var(--blue)}.tag{display:inline-block;background:var(--sub);border:1px solid var(--bd);border-radius:5px;padding:2px 6px;margin:2px;font-size:11px;color:var(--muted)}.empty{color:var(--muted);text-align:center;padding:22px}.warn{background:var(--mid-bg);color:var(--mid);border:1px solid #f2c879;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.7;margin-bottom:12px}.ai{background:var(--sub);border-radius:9px;padding:12px;line-height:1.8;white-space:pre-wrap}.small{font-size:12px;color:var(--muted);line-height:1.6}.hidden{display:none!important}.pillrow{display:flex;flex-wrap:wrap;gap:6px}.score{height:8px;background:var(--sub);border-radius:8px;overflow:hidden;margin-top:6px}.scoreb{height:100%;background:#111}.file-status{font-size:12px;color:var(--muted);max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.dr-wrap{position:relative}.dr-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--bd2);border-radius:9px;background:#fff;padding:8px 10px;cursor:pointer}.dr-panel{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:50;background:#fff;border:1px solid var(--bd2);border-radius:14px;min-width:610px;box-shadow:0 8px 28px rgba(0,0,0,.16)}.dr-panel.open{display:block}.dr-body{display:flex}.presets{width:116px;border-right:1px solid var(--bd);padding:9px 0}.preset{padding:8px 13px;font-size:12px;color:var(--muted);cursor:pointer}.preset:hover{background:var(--sub);color:var(--text)}.cals{display:flex;gap:24px;padding:14px 18px}.cal{width:204px}.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.cal-nav{border:0;background:transparent;cursor:pointer;font-size:18px;color:var(--muted);padding:2px 7px;border-radius:5px}.cal-nav:hover{background:var(--sub)}.cal-title{font-weight:700;font-size:13px}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}.dow{font-size:11px;color:var(--muted);text-align:center;padding:3px 0}.day{font-size:12px;text-align:center;padding:6px 0;border-radius:5px;cursor:pointer}.day:hover{background:var(--sub)}.day.other{color:#aaa}.day.today{color:var(--blue);font-weight:700}.day.sel{background:#111;color:#fff}.day.range{background:var(--sub)}.dr-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd);padding:10px 14px}.project-chip{display:flex;align-items:center;gap:7px}.project-chip .sel{min-width:170px}@media(max-width:920px){.toolbar{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.row,.row3{grid-template-columns:1fr}.top{display:block}.right-actions{justify-content:flex-start;margin-top:12px}.dr-panel{min-width:320px}.dr-body,.cals{display:block}.presets{width:auto;border-right:0;border-bottom:1px solid var(--bd);display:flex;overflow:auto}.cal{width:100%;margin-bottom:10px}.tbl{min-width:1180px}}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px}
+.page{max-width:1320px;margin:0 auto;padding:22px 18px}
+.top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;border-bottom:1px solid var(--bd);padding-bottom:14px;margin-bottom:14px}
+.title{font-size:20px;font-weight:700;display:flex;align-items:center;gap:8px}
+.sub{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.6}
+.right-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.btn{border:1px solid var(--bd2);border-radius:9px;background:#fff;color:var(--text);padding:8px 12px;cursor:pointer;font-size:13px;white-space:nowrap}
+.btn:hover{background:var(--sub)}.btnp{background:#111;color:#fff;border-color:#111}
+.btnblue{background:var(--blue-bg);color:var(--blue);border-color:#9cc5e8;font-weight:700}
+.btngreen{background:var(--win-bg);color:var(--win);border-color:#b5d98a;font-weight:700}
+.toolbar{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:10px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:15px;margin-bottom:14px}
+.mini-card{background:var(--card);border:1px solid var(--bd);border-radius:var(--r);padding:10px}
+.lbl{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
+.inp,.sel,.ta{width:100%;border:1px solid var(--bd2);border-radius:9px;background:#fff;color:var(--text);padding:8px 10px;font-family:inherit;font-size:13px}
+.ta{min-height:130px;resize:vertical;line-height:1.7}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--bd);margin-bottom:14px;overflow:auto}
+.tab{border:0;background:transparent;padding:10px 13px;color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.tab.active{color:var(--text);font-weight:700;border-bottom-color:var(--text)}
+.grid{display:grid;gap:10px}.kpis{grid-template-columns:repeat(12,1fr)}
+.kpi{background:var(--sub);border-radius:10px;padding:12px}
+.kl{font-size:11px;color:var(--muted);margin-bottom:4px}.kv{font-size:20px;font-weight:700}
+.sec{font-weight:700;margin-bottom:10px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px}
+.tblwrap{overflow:auto}
+.tbl{width:100%;border-collapse:collapse;min-width:1100px}
+.tbl th{font-size:11px;text-align:right;color:var(--muted);font-weight:700;padding:7px 8px;border-bottom:1px solid var(--bd);white-space:nowrap}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl td{font-size:12px;text-align:right;padding:8px;border-bottom:1px solid var(--bd);vertical-align:top}
+.tbl tr:hover td{background:var(--sub)}
+.badge{display:inline-block;border-radius:5px;padding:2px 7px;font-size:11px;font-weight:700}
+.bw{background:var(--win-bg);color:var(--win)}.bl{background:var(--lose-bg);color:var(--lose)}
+.bm{background:var(--mid-bg);color:var(--mid)}.bb{background:var(--blue-bg);color:var(--blue)}
+.tag{display:inline-block;background:var(--sub);border:1px solid var(--bd);border-radius:5px;padding:2px 6px;margin:2px;font-size:11px;color:var(--muted)}
+.empty{color:var(--muted);text-align:center;padding:22px}
+.warn{background:var(--mid-bg);color:var(--mid);border:1px solid #f2c879;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.7;margin-bottom:12px}
+.info{background:var(--blue-bg);color:var(--blue);border:1px solid #9cc5e8;border-radius:9px;padding:10px 12px;font-size:12px;line-height:1.7;margin-bottom:12px}
+.ai{background:var(--sub);border-radius:9px;padding:12px;line-height:1.8;white-space:pre-wrap}
+.small{font-size:12px;color:var(--muted);line-height:1.6}
+.hidden{display:none!important}
+.pillrow{display:flex;flex-wrap:wrap;gap:6px}
+.score{height:8px;background:var(--sub);border-radius:8px;overflow:hidden;margin-top:6px}
+.scoreb{height:100%;background:#111}
+.file-status{font-size:12px;color:var(--muted);max-width:360px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* カレンダー */
+.dr-wrap{position:relative}.dr-trigger{display:flex;align-items:center;gap:8px;border:1px solid var(--bd2);border-radius:9px;background:#fff;padding:8px 10px;cursor:pointer}
+.dr-panel{display:none;position:absolute;top:calc(100% + 6px);left:0;z-index:50;background:#fff;border:1px solid var(--bd2);border-radius:14px;min-width:610px;box-shadow:0 8px 28px rgba(0,0,0,.16)}
+.dr-panel.open{display:block}.dr-body{display:flex}
+.presets{width:116px;border-right:1px solid var(--bd);padding:9px 0}
+.preset{padding:8px 13px;font-size:12px;color:var(--muted);cursor:pointer}.preset:hover{background:var(--sub);color:var(--text)}
+.cals{display:flex;gap:24px;padding:14px 18px}.cal{width:204px}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.cal-nav{border:0;background:transparent;cursor:pointer;font-size:18px;color:var(--muted);padding:2px 7px;border-radius:5px}.cal-nav:hover{background:var(--sub)}
+.cal-title{font-weight:700;font-size:13px}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+.dow{font-size:11px;color:var(--muted);text-align:center;padding:3px 0}
+.day{font-size:12px;text-align:center;padding:6px 0;border-radius:5px;cursor:pointer}.day:hover{background:var(--sub)}
+.day.other{color:#aaa}.day.today{color:var(--blue);font-weight:700}.day.sel{background:#111;color:#fff}.day.range{background:var(--sub)}
+.dr-footer{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--bd);padding:10px 14px}
+.project-chip{display:flex;align-items:center;gap:7px}.project-chip .sel{min-width:170px}
+/* モーダル */
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;display:flex;align-items:center;justify-content:center}
+.modal-box{background:#fff;border-radius:16px;padding:28px;width:600px;max-width:94vw;box-shadow:0 16px 48px rgba(0,0,0,.18);max-height:92vh;overflow-y:auto}
+.modal-title{font-size:17px;font-weight:700;margin-bottom:6px}
+.modal-sub{font-size:12px;color:var(--muted);margin-bottom:18px;line-height:1.7}
+.status-ok{background:var(--win-bg);color:var(--win);border-radius:6px;padding:4px 10px;font-size:12px;display:inline-block;margin-top:8px}
+.status-err{background:var(--lose-bg);color:var(--lose);border-radius:6px;padding:4px 10px;font-size:12px;display:inline-block;margin-top:8px}
+.status-loading{background:var(--blue-bg);color:var(--blue);border-radius:6px;padding:4px 10px;font-size:12px;display:inline-block;margin-top:8px}
+/* シナリオマスタカード */
+.sc-master-card{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.sc-master-card.linked{border-left:3px solid var(--win)}
+.sc-master-card.unlinked{border-left:3px solid var(--bd2)}
+.link-badge{font-size:11px;padding:2px 8px;border-radius:5px;display:inline-block;font-weight:700}
+.link-ok{background:var(--win-bg);color:var(--win)}.link-no{background:var(--sub);color:var(--muted)}
+@media(max-width:920px){.toolbar{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.row,.row3{grid-template-columns:1fr}.top{display:block}.right-actions{justify-content:flex-start;margin-top:12px}.dr-panel{min-width:320px}.dr-body,.cals{display:block}.presets{width:auto;border-right:0;border-bottom:1px solid var(--bd);display:flex;overflow:auto}.cal{width:100%;margin-bottom:10px}.tbl{min-width:900px}}
 </style>
 </head>
 <body>
 <div class="page">
   <div class="top">
-    <div><div class="title"><i class="ti ti-chart-bar"></i>Tiktok 広告分析</div><div class="sub">案件ごとにTikTokレポートCSVを読み込み、クリエイティブアセット名単位で集計・分析します。</div></div>
+    <div>
+      <div class="title"><i class="ti ti-chart-bar"></i>Tiktok 広告分析</div>
+      <div class="sub">案件ごとにTikTokレポートCSVを読み込み、クリエイティブアセット名単位で集計・分析します。</div>
+    </div>
     <div class="right-actions">
       <span id="file-status" class="file-status">CSV未読込</span>
       <input type="file" id="csv-file" accept=".csv,text/csv" class="hidden" onchange="handleFile(event)">
-      <input type="file" id="scenario-file" accept=".csv,.tsv,.txt,text/csv,text/tab-separated-values" class="hidden" onchange="handleScenarioFile(event)">
       <button class="btn btnblue" onclick="document.getElementById('csv-file').click()"><i class="ti ti-file-upload"></i> CSV読込</button>
       <button class="btn" onclick="resetProject()">案件データ初期化</button>
     </div>
@@ -27,146 +103,752 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
   <div class="toolbar">
     <div class="mini-card">
       <label class="lbl">案件</label>
-      <div class="project-chip"><select id="project-select" class="sel" onchange="changeProject(this.value)"></select><button class="btn" onclick="addProject()">追加</button></div>
+      <div class="project-chip">
+        <select id="project-select" class="sel" onchange="changeProject(this.value)"></select>
+        <button class="btn" onclick="addProject()">追加</button>
+      </div>
     </div>
     <div class="mini-card">
       <label class="lbl">期間</label>
-      <div class="dr-wrap"><div class="dr-trigger" onclick="toggleCal()"><i class="ti ti-calendar"></i><span id="dr-label">期間未指定</span><i class="ti ti-chevron-down" style="margin-left:auto"></i></div><div id="dr-panel" class="dr-panel">
-        <div class="dr-body"><div class="presets"><div class="preset" onclick="applyPreset('today')">今日</div><div class="preset" onclick="applyPreset('yesterday')">昨日</div><div class="preset" onclick="applyPreset('7d')">過去7日間</div><div class="preset" onclick="applyPreset('14d')">過去14日間</div><div class="preset" onclick="applyPreset('30d')">過去30日間</div><div class="preset" onclick="applyPreset('thismonth')">今月</div><div class="preset" onclick="clearDateRange()">全期間</div></div><div class="cals"><div class="cal"><div class="cal-head"><button class="cal-nav" onclick="navCal(-1,'L')">‹</button><span id="ctl-L" class="cal-title"></span><button class="cal-nav" onclick="navCal(1,'L')">›</button></div><div id="cal-L" class="cal-grid"></div></div><div class="cal"><div class="cal-head"><button class="cal-nav" onclick="navCal(-1,'R')">‹</button><span id="ctl-R" class="cal-title"></span><button class="cal-nav" onclick="navCal(1,'R')">›</button></div><div id="cal-R" class="cal-grid"></div></div></div></div>
-        <div class="dr-footer"><span id="dr-sel" class="small"></span><div><button class="btn" onclick="closeCal()">キャンセル</button> <button class="btn btnp" onclick="confirmCal()">反映</button></div></div>
-      </div></div>
+      <div class="dr-wrap">
+        <div class="dr-trigger" onclick="toggleCal()"><i class="ti ti-calendar"></i><span id="dr-label">期間未指定</span><i class="ti ti-chevron-down" style="margin-left:auto"></i></div>
+        <div id="dr-panel" class="dr-panel">
+          <div class="dr-body">
+            <div class="presets"><div class="preset" onclick="applyPreset('today')">今日</div><div class="preset" onclick="applyPreset('yesterday')">昨日</div><div class="preset" onclick="applyPreset('7d')">過去7日間</div><div class="preset" onclick="applyPreset('14d')">過去14日間</div><div class="preset" onclick="applyPreset('30d')">過去30日間</div><div class="preset" onclick="applyPreset('thismonth')">今月</div><div class="preset" onclick="clearDateRange()">全期間</div></div>
+            <div class="cals"><div class="cal"><div class="cal-head"><button class="cal-nav" onclick="navCal(-1,'L')">‹</button><span id="ctl-L" class="cal-title"></span><button class="cal-nav" onclick="navCal(1,'L')">›</button></div><div id="cal-L" class="cal-grid"></div></div><div class="cal"><div class="cal-head"><button class="cal-nav" onclick="navCal(-1,'R')">‹</button><span id="ctl-R" class="cal-title"></span><button class="cal-nav" onclick="navCal(1,'R')">›</button></div><div id="cal-R" class="cal-grid"></div></div></div>
+          </div>
+          <div class="dr-footer"><span id="dr-sel" class="small"></span><div><button class="btn" onclick="closeCal()">キャンセル</button> <button class="btn btnp" onclick="confirmCal()">反映</button></div></div>
+        </div>
+      </div>
     </div>
-    <div class="mini-card"><label class="lbl">案件固定設定</label><div style="display:flex;align-items:center;justify-content:space-between;gap:10px"><div class="small"><strong>成果単価：</strong><span id="fixed-unit-price">未設定</span><br><strong>主KPI：</strong><span id="fixed-primary-kpi">会員登録率/CVR</span></div><button class="btn" onclick="openProjectSettings()">案件設定</button></div></div>
+    <div class="mini-card">
+      <label class="lbl">案件固定設定</label>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <div class="small"><strong>成果単価：</strong><span id="fixed-unit-price">未設定</span><br><strong>主KPI：</strong><span id="fixed-primary-kpi">会員登録率/CVR</span></div>
+        <button class="btn" onclick="openProjectSettings()">案件設定</button>
+      </div>
+    </div>
   </div>
 
   <div class="tabs">
     <button class="tab active" onclick="showTab('dash')" id="t-dash">ダッシュボード</button>
-    <button class="tab" onclick="showTab('scenario')" id="t-scenario">シナリオ登録</button>
+    <button class="tab" onclick="showTab('scenario')" id="t-scenario">シナリオマスタ</button>
     <button class="tab" onclick="showTab('cross')" id="t-cross">横断分析</button>
     <button class="tab" onclick="showTab('idea')" id="t-idea">次の広告案</button>
     <button class="tab" onclick="showTab('score')" id="t-score">入稿前スコア</button>
     <button class="tab" onclick="showTab('import')" id="t-import">読込履歴</button>
   </div>
 
+  <!-- ダッシュボード -->
   <div id="tab-dash">
     <div class="grid kpis" id="kpis"></div>
-    <div class="card"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px"><div class="sec" style="margin:0">クリエイティブアセット別パフォーマンス</div><button class="btn" onclick="exportGroupedCsv()">集計CSVを書き出し</button></div><div class="tblwrap"><table class="tbl"><thead><tr><th>クリエイティブアセット名</th><th>広告数</th><th>Cost</th><th>Imp</th><th>CPM</th><th>Click</th><th>CTR</th><th>CPC</th><th>Install/CV</th><th>CPI/CPA</th><th>CVR</th><th>会員登録数<br><span class="small">手入力可</span></th><th>売上</th><th>利益</th><th>ROAS</th><th>判定</th></tr></thead><tbody id="dash-body"><tr><td colspan="16"><div class="empty">右上の「CSV読込」からTikTokレポートを読み込んでください</div></td></tr></tbody></table></div></div>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px">
+        <div class="sec" style="margin:0">クリエイティブアセット別パフォーマンス</div>
+        <button class="btn" onclick="exportGroupedCsv()">集計CSVを書き出し</button>
+      </div>
+      <div class="tblwrap">
+        <table class="tbl">
+          <thead><tr>
+            <th>クリエイティブアセット名</th>
+            <th>Cost</th><th>Imp</th><th>CPM</th><th>Click</th><th>CTR</th><th>CPC</th>
+            <th>Install/CV</th><th>CPI/CPA</th><th>CVR</th>
+            <th>会員登録数<br><span class="small">手入力可</span></th>
+            <th>売上</th><th>利益</th><th>ROAS</th><th>シナリオ</th><th>判定</th>
+          </tr></thead>
+          <tbody id="dash-body">
+            <tr><td colspan="17"><div class="empty">右上の「CSV読込」からTikTokレポートを読み込んでください</div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
+  <!-- シナリオマスタ -->
   <div id="tab-scenario" class="hidden">
-    <div class="card">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:12px"><div><div class="sec" style="margin-bottom:4px">スプレッドシートから自動読込</div><div class="small">Googleスプレッドシートの「バチェラー日次数値」シートH列のクリエイティブアセット名と、「シナリオ」シートD列を紐付けて、シナリオを自動登録します。D列が空・完全一致しない場合は、C列の番号やファイル名の規則から自動推定します。</div></div></div>
-      <div class="row3">
-        <div><label class="lbl">GoogleスプレッドシートURL</label><input id="gsheet-url" class="inp" value="https://docs.google.com/spreadsheets/d/1Ptw8zMpLVud3jbIctqqPEJP4lZ-FPu1XAnbTT70aG3E/edit?gid=440886756#gid=440886756"></div>
-        <div><label class="lbl">数値シート名</label><input id="gsheet-report-sheet" class="inp" value="バチェラー日次数値"></div>
-        <div><label class="lbl">シナリオシート名</label><input id="gsheet-scenario-sheet" class="inp" value="シナリオ"></div>
-      </div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center">
-        <button class="btn btnblue" onclick="importGoogleSheetBundle()"><i class="ti ti-cloud-download"></i> スプレッドシートから数値・シナリオ読込</button>
-        <button class="btn" onclick="document.getElementById('scenario-file').click()"><i class="ti ti-table-import"></i> シナリオCSV読込</button>
-        <span id="scenario-import-status" class="small">未読込</span>
-      </div>
-      <div class="small" style="margin-top:8px">※読み込めない場合は、スプレッドシートの共有設定を「リンクを知っている全員が閲覧可」にしてください。</div>
+
+    <!-- 説明バナー -->
+    <div class="info">
+      <strong><i class="ti ti-database"></i> シナリオマスタについて</strong><br>
+      ここに登録したシナリオは<strong>CSVを読み替えても消えません</strong>。「CR名（クリエイティブアセット名）」がCSVのアセット名と一致すると、ダッシュボードに自動で紐付けて表示されます。<br>
+      スプレッドシートから一括読込もできます（「シナリオ」シートD列＝CR名、C列＝シナリオ全文）。
     </div>
-    <div class="card"><div class="sec">シナリオ登録・自動構造分解</div><div class="row"><div><label class="lbl">紐づけるクリエイティブアセット名</label><select class="sel" id="sc-asset"></select></div><div><label class="lbl">訴求軸</label><select class="sel" id="sc-axis"><option>課題解決</option><option>感情訴求</option><option>機能訴求</option><option>比較訴求</option><option>社会的証明</option><option>価格訴求</option><option>限定・希少性</option><option>その他</option></select></div></div><div class="row"><div><label class="lbl">ターゲット</label><input class="inp" id="sc-target" placeholder="例：30代男性・マチアプ疲れ"></div><div><label class="lbl">動画尺</label><select class="sel" id="sc-dur"><option>〜15秒</option><option>16〜30秒</option><option>31〜60秒</option><option>60秒〜</option></select></div></div><label class="lbl">シナリオ全文</label><textarea id="sc-full" class="ta" placeholder="台本・ナレーション・テロップを貼り付け"></textarea><div style="margin-top:10px;display:flex;gap:8px"><button class="btn btnp" onclick="saveScenario()">登録して構造分解</button><button class="btn" onclick="clearScenarioForm()">クリア</button></div></div><div id="scenario-list"></div>
+
+    <!-- 操作ボタン -->
+    <div style="display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap">
+      <button class="btn btnblue" onclick="openSheetModal()"><i class="ti ti-table-import"></i> スプレッドシートから一括読込</button>
+      <button class="btn btngreen" onclick="openAddScenarioModal()"><i class="ti ti-plus"></i> シナリオを手動追加</button>
+      <span class="small" style="align-self:center;margin-left:4px" id="master-count"></span>
+    </div>
+
+    <!-- マスタ一覧 -->
+    <div id="scenario-master-list"></div>
   </div>
 
   <div id="tab-cross" class="hidden"><div class="card"><div class="sec">勝ち広告・負け広告の横断比較</div><div id="cross-result" class="ai">CSVとシナリオを登録すると表示されます。</div></div></div>
   <div id="tab-idea" class="hidden"><div class="card"><div class="sec">次に作るべき広告案</div><div id="idea-result" class="ai">勝ちパターンをもとに生成します。</div><div style="margin-top:10px"><button class="btn btnp" onclick="generateIdeas()">広告案を生成</button><button class="btn" onclick="copyPrompt()">AI分析プロンプトをコピー</button></div></div></div>
   <div id="tab-score" class="hidden"><div class="card"><div class="sec">入稿前スコアリング（勝率予測）</div><div class="row"><div><label class="lbl">訴求軸</label><select class="sel" id="pre-axis"><option>課題解決</option><option>感情訴求</option><option>機能訴求</option><option>比較訴求</option><option>社会的証明</option><option>価格訴求</option><option>限定・希少性</option><option>その他</option></select></div><div><label class="lbl">動画尺</label><select class="sel" id="pre-dur"><option>〜15秒</option><option>16〜30秒</option><option>31〜60秒</option><option>60秒〜</option></select></div></div><label class="lbl">入稿前のシナリオ案</label><textarea class="ta" id="pre-script" placeholder="これから作る広告の台本を貼り付け"></textarea><div style="margin-top:10px"><button class="btn btnp" onclick="scoreDraft()">スコアリングする</button></div></div><div id="score-result"></div></div>
-  <div id="tab-import" class="hidden"><div class="card"><div class="sec">CSV読込履歴・列マッピング</div><div class="warn">右上の「CSV読込」からファイルを選択してください。列名は「広告名」「クリエイティブアセット名」「クリエイティブアセットID」「コスト」「インプレッション」「クリック（誘導先）」「コンバージョン」などを自動認識します。日付列があれば、上部カレンダーで期間絞り込みできます。</div><div id="import-preview" class="ai">未読込</div></div></div>
+  <div id="tab-import" class="hidden"><div class="card"><div class="sec">CSV読込履歴・列マッピング</div><div class="warn">右上の「CSV読込」からファイルを選択してください。列名は「クリエイティブアセット名」「コスト」「インプレッション」「クリック（誘導先）」「コンバージョン」などを自動認識します。</div><div id="import-preview" class="ai">未読込</div></div></div>
 </div>
+
+<!-- ────────────────────────────────────────
+  モーダル①：シナリオ手動追加
+──────────────────────────────────────── -->
+<div id="add-modal" class="modal-ov hidden">
+  <div class="modal-box">
+    <div class="modal-title"><i class="ti ti-plus"></i> シナリオを追加</div>
+    <div class="modal-sub">
+      <strong>CR名</strong>はTikTokレポートCSVの「クリエイティブアセット名」と完全一致させてください。<br>
+      一度登録したシナリオはCSVを読み替えても消えません。
+    </div>
+    <div class="row" style="margin-bottom:10px">
+      <div>
+        <label class="lbl">CR名（クリエイティブアセット名）<span style="color:red">*</span></label>
+        <input class="inp" id="add-cr-name" placeholder="例：BD_感情訴求_v1">
+        <div id="add-cr-hint" class="small" style="margin-top:4px"></div>
+      </div>
+      <div>
+        <label class="lbl">訴求軸</label>
+        <select class="sel" id="add-axis"><option>課題解決</option><option>感情訴求</option><option>機能訴求</option><option>比較訴求</option><option>社会的証明</option><option>価格訴求</option><option>限定・希少性</option><option>その他</option></select>
+      </div>
+    </div>
+    <div class="row" style="margin-bottom:10px">
+      <div><label class="lbl">ターゲット</label><input class="inp" id="add-target" placeholder="例：30代女性・婚活中"></div>
+      <div><label class="lbl">動画尺</label><select class="sel" id="add-dur"><option>〜15秒</option><option>16〜30秒</option><option>31〜60秒</option><option>60秒〜</option></select></div>
+    </div>
+    <label class="lbl">シナリオ全文</label>
+    <textarea class="ta" id="add-full" placeholder="台本・ナレーション・テロップを貼り付け" style="min-height:180px"></textarea>
+    <div style="display:flex;gap:8px;margin-top:16px;justify-content:flex-end">
+      <button class="btn" onclick="closeAddModal()">キャンセル</button>
+      <button class="btn btnp" onclick="saveManualScenario()"><i class="ti ti-check"></i> 登録する</button>
+    </div>
+  </div>
+</div>
+
+<!-- ────────────────────────────────────────
+  モーダル③：案件固定設定
+──────────────────────────────────────── -->
+<div id="ps-modal" class="modal-ov hidden">
+  <div class="modal-box" style="max-width:420px">
+    <div class="modal-title"><i class="ti ti-settings"></i> 案件設定</div>
+    <div class="modal-sub" id="ps-modal-sub"></div>
+
+    <label class="lbl" style="margin-bottom:6px">成果単価（円 / CV）</label>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+      <span style="font-size:14px;color:var(--muted)">¥</span>
+      <input class="inp" type="number" id="ps-unit-price" placeholder="例：3000" min="0" step="100" style="flex:1">
+      <span style="font-size:13px;color:var(--muted);white-space:nowrap">/ CV</span>
+    </div>
+    <div class="small" style="margin-bottom:18px">1件のCVあたりの売上単価。設定すると売上・利益・ROASが自動計算されます。</div>
+
+    <label class="lbl" style="margin-bottom:8px">主KPI（勝ち／負けの判定基準）</label>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px" id="ps-kpi-grid">
+      <label class="kpi-radio-label" onclick="selectKpi('reg_rate')">
+        <div class="kpi-radio-card" id="kpi-card-reg_rate">
+          <div style="font-weight:700;font-size:13px">会員登録率 / CVR</div>
+          <div class="small">CV ÷ Click</div>
+        </div>
+      </label>
+      <label class="kpi-radio-label" onclick="selectKpi('install_rate')">
+        <div class="kpi-radio-card" id="kpi-card-install_rate">
+          <div style="font-weight:700;font-size:13px">インストール率</div>
+          <div class="small">Install ÷ Click</div>
+        </div>
+      </label>
+      <label class="kpi-radio-label" onclick="selectKpi('ctr')">
+        <div class="kpi-radio-card" id="kpi-card-ctr">
+          <div style="font-weight:700;font-size:13px">CTR</div>
+          <div class="small">Click ÷ Imp</div>
+        </div>
+      </label>
+      <label class="kpi-radio-label" onclick="selectKpi('roas')">
+        <div class="kpi-radio-card" id="kpi-card-roas">
+          <div style="font-weight:700;font-size:13px">ROAS</div>
+          <div class="small">売上 ÷ Cost</div>
+        </div>
+      </label>
+    </div>
+    <!-- hidden select for actual value -->
+    <select id="ps-kpi" class="hidden"></select>
+
+    <div style="display:flex;gap:8px;justify-content:flex-end">
+      <button class="btn" onclick="closeProjectSettings()">キャンセル</button>
+      <button class="btn btnp" onclick="saveProjectSettings()"><i class="ti ti-check"></i> 保存する</button>
+    </div>
+  </div>
+</div>
+
+<style>
+.kpi-radio-label{cursor:pointer}
+.kpi-radio-card{border:1.5px solid var(--bd2);border-radius:10px;padding:10px 14px;transition:all .15s}
+.kpi-radio-card:hover{border-color:var(--blue);background:var(--blue-bg)}
+.kpi-radio-card.selected{border-color:#111;background:#111;color:#fff}
+.kpi-radio-card.selected .small{color:rgba(255,255,255,.7)}
+</style>
+<div id="sheet-modal" class="modal-ov hidden">
+  <div class="modal-box">
+    <div class="modal-title"><i class="ti ti-table-import"></i> スプレッドシートから一括読込</div>
+    <div class="modal-sub">
+      スプレッドシートを<strong>「リンクを知っている全員が閲覧可能」</strong>に設定してからURLを貼り付けてください。<br>
+      <strong>D列</strong>＝CR名（クリエイティブアセット名）／<strong>C列</strong>＝シナリオ全文　として読み込みます。<br>
+      既存のシナリオマスタは上書きせず、新規のみ追加します。
+    </div>
+    <label class="lbl">スプレッドシートURL</label>
+    <input class="inp" id="sheet-url-input" placeholder="https://docs.google.com/spreadsheets/d/..." style="margin-bottom:10px;font-size:12px">
+    <div class="row3" style="margin-bottom:10px">
+      <div><label class="lbl">シート名</label><input class="inp" id="sheet-name-input" placeholder="シナリオ"></div>
+      <div><label class="lbl">CR名の列</label><input class="inp" id="sheet-asset-col" placeholder="D" style="max-width:64px"></div>
+      <div><label class="lbl">シナリオ全文の列</label><input class="inp" id="sheet-scenario-col" placeholder="C" style="max-width:64px"></div>
+    </div>
+    <div id="sheet-status" style="min-height:28px"></div>
+    <div style="display:flex;gap:8px;margin-top:16px;justify-content:flex-end">
+      <button class="btn" onclick="closeSheetModal()">キャンセル</button>
+      <button class="btn btnp" onclick="loadFromSheet()"><i class="ti ti-download"></i> 読み込む</button>
+    </div>
+  </div>
+</div>
+
 <script>
-let state={projects:{},current:'バチェラーデート'};
-let rawRows=[], ads=[], scenarios={}, manualRegs={}, unitPrice=null, primaryKpi='reg_rate';
-let calLY,calLM,calRY,calRM,pickStart=null,pickEnd=null,hovDate=null,picking=false,confStart=null,confEnd=null;
-const DOW=['日','月','火','水','木','金','土']; const MONTHS=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
-const yen=n=>n==null||isNaN(n)?'-':'¥'+Math.round(n).toLocaleString(); const num=n=>n==null||isNaN(n)?'-':Math.round(n).toLocaleString(); const pct=n=>n==null||isNaN(n)?'-':Number(n).toFixed(2)+'%'; const roas=n=>n==null||isNaN(n)?'-':Number(n).toFixed(2)+'x';
-function esc(s){return String(s??'').replace(/[&<>\"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[m]||m))} function escAttr(s){return String(s).replace(/'/g,"\\'").replace(/</g,'&lt;')}
-function showTab(t){['dash','scenario','cross','idea','score','import'].forEach(x=>{document.getElementById('tab-'+x).classList.toggle('hidden',x!==t);document.getElementById('t-'+x).classList.toggle('active',x===t)}); if(t==='cross')renderCross(); if(t==='idea')generateIdeas(false);}
-function ensureProject(name){if(!state.projects[name])state.projects[name]={rawRows:[],scenarios:{},manualRegs:{},unitPrice:null,primaryKpi:'reg_rate',confStart:null,confEnd:null,lastFile:'',scenarioFile:''}}
-function loadFromState(){ensureProject(state.current);const p=state.projects[state.current];rawRows=p.rawRows||[];scenarios=p.scenarios||{};manualRegs=p.manualRegs||{};unitPrice=p.unitPrice;primaryKpi=p.primaryKpi||'reg_rate';confStart=p.confStart?new Date(p.confStart):null;confEnd=p.confEnd?new Date(p.confEnd):null;document.getElementById('file-status').textContent=p.lastFile?`読込済：${p.lastFile}`:'CSV未読込';updateDateLabel();renderFixedSettings();aggregate();renderAll();}
-function saveState(){ensureProject(state.current);Object.assign(state.projects[state.current],{rawRows,scenarios,manualRegs,unitPrice,primaryKpi,confStart:confStart?confStart.toISOString():null,confEnd:confEnd?confEnd.toISOString():null});localStorage.setItem('tiktok_analysis_v6',JSON.stringify(state));}
-function initProjects(){try{state=JSON.parse(localStorage.getItem('tiktok_analysis_v6')||'null')||state}catch(e){};['バチェラーデート','家づくり','キミナラ'].forEach(ensureProject);renderProjectSelect();loadFromState();}
-function renderProjectSelect(){const sel=document.getElementById('project-select');sel.innerHTML=Object.keys(state.projects).map(k=>`<option value="${esc(k)}">${esc(k)}</option>`).join('');sel.value=state.current;}
+// ═══════════════════════════════════════════
+//  状態管理
+//  scenarios（シナリオマスタ）は案件をまたいで永続
+//  rawRows・manualRegs・設定は案件ごとに保存
+// ═══════════════════════════════════════════
+let state = {
+  projects: {},
+  current: 'バチェラーデート',
+  // シナリオマスタ：案件をまたいで保持（CR名 → シナリオオブジェクト）
+  scenarioMaster: {}
+};
+let rawRows = [], ads = [], manualRegs = {}, unitPrice = null, primaryKpi = 'reg_rate';
+let _selectedKpi = 'reg_rate';
+let calLY, calLM, calRY, calRM, pickStart=null, pickEnd=null, hovDate=null, picking=false, confStart=null, confEnd=null;
+const DOW=['日','月','火','水','木','金','土'];
+const MONTHS=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const yen = n => n==null||isNaN(n) ? '-' : '¥'+Math.round(n).toLocaleString();
+const num = n => n==null||isNaN(n) ? '-' : Math.round(n).toLocaleString();
+const pct = n => n==null||isNaN(n) ? '-' : Number(n).toFixed(2)+'%';
+const roas = n => n==null||isNaN(n) ? '-' : Number(n).toFixed(2)+'x';
+function esc(s){return String(s??'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]||m))}
+function escAttr(s){return String(s).replace(/'/g,"\\'").replace(/</g,'&lt;')}
+
+// ── プロジェクト管理 ──
+function ensureProject(name){if(!state.projects[name])state.projects[name]={rawRows:[],manualRegs:{},unitPrice:null,primaryKpi:'reg_rate',confStart:null,confEnd:null,lastFile:''}}
+function saveState(){
+  ensureProject(state.current);
+  Object.assign(state.projects[state.current],{rawRows,manualRegs,unitPrice,primaryKpi,confStart:confStart?confStart.toISOString():null,confEnd:confEnd?confEnd.toISOString():null});
+  localStorage.setItem('tiktok_v8',JSON.stringify(state));
+}
+function loadFromState(){
+  ensureProject(state.current);
+  const p=state.projects[state.current];
+  rawRows=p.rawRows||[]; manualRegs=p.manualRegs||{};
+  unitPrice=p.unitPrice; primaryKpi=p.primaryKpi||'reg_rate';
+  confStart=p.confStart?new Date(p.confStart):null;
+  confEnd=p.confEnd?new Date(p.confEnd):null;
+  document.getElementById('file-status').textContent=p.lastFile?`読込済：${p.lastFile}`:'CSV未読込';
+  updateDateLabel(); renderFixedSettings(); aggregate(); renderAll();
+}
+function initProjects(){
+  try{state=JSON.parse(localStorage.getItem('tiktok_v8')||'null')||state}catch(e){}
+  if(!state.scenarioMaster) state.scenarioMaster={};
+  ['バチェラーデート','家づくり','キミナラ'].forEach(ensureProject);
+  renderProjectSelect(); loadFromState();
+}
+function renderProjectSelect(){
+  const sel=document.getElementById('project-select');
+  sel.innerHTML=Object.keys(state.projects).map(k=>`<option value="${esc(k)}">${esc(k)}</option>`).join('');
+  sel.value=state.current;
+}
 function changeProject(v){state.current=v;saveState();loadFromState();}
 function addProject(){const n=prompt('案件名を入力してください（例：進研ゼミ）');if(!n)return;ensureProject(n.trim());state.current=n.trim();renderProjectSelect();saveState();loadFromState();}
-function resetProject(){if(!confirm(`「${state.current}」のCSV・シナリオ保存データを削除しますか？
-※成果単価・主KPIの案件設定は残します。`))return;const old=state.projects[state.current]||{};state.projects[state.current]={rawRows:[],scenarios:{},manualRegs:{},unitPrice:old.unitPrice??null,primaryKpi:old.primaryKpi||'reg_rate',confStart:null,confEnd:null,lastFile:'',scenarioFile:''};saveState();loadFromState();}
-function kpiLabel(v){return {reg_rate:'会員登録率/CVR',install_rate:'インストール率',ctr:'CTR',roas:'ROAS'}[v]||v}
-function renderFixedSettings(){document.getElementById('fixed-unit-price').textContent=unitPrice!=null?yen(unitPrice)+' / CV':'未設定';document.getElementById('fixed-primary-kpi').textContent=kpiLabel(primaryKpi)}
-function openProjectSettings(){const cur=unitPrice!=null?unitPrice:'';const up=prompt(`「${state.current}」の成果単価（円/CV）を入力してください。\n一度設定すると案件ごとに保存されます。`,cur);if(up===null)return;const parsed=parseFloat(String(up).replace(/[,，円\s]/g,''));unitPrice=isNaN(parsed)?null:parsed;const k=prompt(`主KPIを入力してください：\n1: 会員登録率/CVR\n2: インストール率\n3: CTR\n4: ROAS`,primaryKpi==='install_rate'?'2':primaryKpi==='ctr'?'3':primaryKpi==='roas'?'4':'1');if(k!==null){primaryKpi=({1:'reg_rate',2:'install_rate',3:'ctr',4:'roas',reg_rate:'reg_rate',install_rate:'install_rate',ctr:'ctr',roas:'roas'}[String(k).trim()]||primaryKpi)}renderFixedSettings();aggregate();renderAll();saveState()}
-function updateSettings(){renderFixedSettings();aggregate();renderAll();saveState();}
-function parseCSV(text){const rows=[];let row=[],cell='',q=false;for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(q){if(c==='"'&&n==='"'){cell+='"';i++}else if(c==='"'){q=false}else cell+=c}else{if(c==='"')q=true;else if(c===','){row.push(cell);cell=''}else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell=''}else if(c==='\r'){}else cell+=c}}if(cell!==''||row.length){row.push(cell);rows.push(row)}return rows.filter(r=>r.some(c=>String(c).trim()!==''));}
-function handleFile(e){const f=e.target.files[0]; if(!f)return;const reader=new FileReader();reader.onload=()=>{const rows=parseCSV(reader.result);if(rows.length<2){alert('CSVを読み取れませんでした');return}const head=rows[0].map(h=>h.trim());rawRows=rows.slice(1).map(r=>{const o={};head.forEach((h,i)=>o[h]=r[i]??'');return o});state.projects[state.current].lastFile=f.name;aggregate();renderAll();document.getElementById('file-status').textContent=`読込済：${f.name}`;document.getElementById('import-preview').textContent=`${f.name}\n${rawRows.length}行を読み込みました。\n\n認識した列：\n${head.join(' / ')}`;saveState();showTab('dash')};reader.readAsText(f,'utf-8');}
-function parseSheet(text){const first=(text.split(/\r?\n/).find(x=>x.trim())||'');if((first.match(/\t/g)||[]).length>(first.match(/,/g)||[]).length){return text.split(/\r?\n/).filter(l=>l.trim()).map(l=>l.split('\t'))}return parseCSV(text)}
-function findAssetForScenario(row){const asset=val(row,['クリエイティブアセット名','Creative asset name','アセット名','assetName','asset_name']);if(asset)return asset;const ad=val(row,['広告名','Ad name','adName','ad_name']);if(ad){const hit=ads.find(a=>a.adNames&&Array.from(a.adNames).includes(ad));if(hit)return hit.assetName;return ad}return ''}
-function inferAxisFromText(t){if(/比較|違い|より|今まで|前は/.test(t))return '比較訴求';if(/不安|しんどい|疲れ|悩|怖|面倒|困/.test(t))return '課題解決';if(/無料|安|価格|円|割引/.test(t))return '価格訴求';if(/審査|AI|機能|自動|調整|防止/.test(t))return '機能訴求';if(/口コミ|レビュー|みんな|人気|実績/.test(t))return '社会的証明';return 'その他'}
-
-function getSheetIdFromUrl(url){const m=String(url||'').match(/\/d\/([a-zA-Z0-9-_]+)/);return m?m[1]:''}
-function sheetCsvUrl(urlOrId,sheetName){const id=getSheetIdFromUrl(urlOrId)||urlOrId;return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`}
-async function fetchSheetRows(urlOrId,sheetName){const u=sheetCsvUrl(urlOrId,sheetName);const res=await fetch(u);if(!res.ok)throw new Error(`${sheetName} を読み込めませんでした（${res.status}）`);const text=await res.text();return parseSheet(text)}
-function rowsToObjects(rows){if(!rows||rows.length<2)return [];const head=rows[0].map(h=>String(h||'').trim());return rows.slice(1).filter(r=>r.some(v=>String(v||'').trim()!=='')).map(r=>{const o={};head.forEach((h,i)=>o[h]=r[i]??'');return o})}
-function col(row,letter){const keys=Object.keys(row);const idx=letter.toUpperCase().charCodeAt(0)-65;return row[keys[idx]]??''}
-function normAssetName(x){return String(x||'').toLowerCase().replace(/\.mp4|\.mov|\.m4v/g,'').replace(/[\s　]/g,'').replace(/[＿]/g,'_').trim()}
-function extractScenarioNo(x){const t=String(x||'');let m=t.match(/(?:^|[_\-\s　])0?(\d{1,3})(?:[_\-\s　]|$)/);if(m)return String(parseInt(m[1],10)).padStart(2,'0');m=t.match(/(?:no\.?|#|シナリオ|案|hook|フック)\s*0?(\d{1,3})/i);if(m)return String(parseInt(m[1],10)).padStart(2,'0');return ''}
-function matchAssetNameFromScenario(row,assetNames){
-  const d=String(col(row,'D')||val(row,['クリエイティブアセット名','Creative asset name','アセット名','assetName','asset_name'])||'').trim();
-  const c=String(col(row,'C')||val(row,['素材名','動画名','シナリオ名','管理名','No','番号'])||'').trim();
-  const candidates=[d,c].filter(Boolean);
-  for(const cand of candidates){const exact=assetNames.find(a=>a===cand);if(exact)return exact;}
-  for(const cand of candidates){const nc=normAssetName(cand);const hit=assetNames.find(a=>normAssetName(a)===nc||normAssetName(a).includes(nc)||nc.includes(normAssetName(a)));if(hit)return hit;}
-  const no=extractScenarioNo(c)||extractScenarioNo(d);
-  if(no){const hit=assetNames.find(a=>new RegExp(`(^|[_\\-])0?${parseInt(no,10)}([_\\-.]|$)`).test(normAssetName(a)));if(hit)return hit;}
-  return d||c||'';
+function resetProject(){
+  if(!confirm(`「${state.current}」のCSV・手動登録データを削除しますか？\n※シナリオマスタと案件設定は残ります。`))return;
+  const old=state.projects[state.current]||{};
+  state.projects[state.current]={rawRows:[],manualRegs:{},unitPrice:old.unitPrice??null,primaryKpi:old.primaryKpi||'reg_rate',confStart:null,confEnd:null,lastFile:''};
+  saveState(); loadFromState();
 }
-function scenarioFullFromRow(row){
-  const named=val(row,['シナリオ全文','台本','スクリプト','シナリオ','Scenario','Script','本文','ナレーション','テロップ']);
-  if(named)return named;
-  const vals=Object.values(row).map(v=>String(v||'').trim()).filter(Boolean);
-  const long=vals.filter(v=>v.length>=20).sort((a,b)=>b.length-a.length)[0];
-  return long||'';
+function kpiLabel(v){return{reg_rate:'会員登録率/CVR',install_rate:'インストール率',ctr:'CTR',roas:'ROAS'}[v]||v}
+function renderFixedSettings(){
+  document.getElementById('fixed-unit-price').textContent=unitPrice!=null?yen(unitPrice)+' / CV':'未設定';
+  document.getElementById('fixed-primary-kpi').textContent=kpiLabel(primaryKpi);
 }
-function importScenarioObjects(objects,sourceLabel){
-  const assetNames=ads.map(a=>a.assetName);
-  let imported=0,skipped=0,estimated=0;
-  objects.forEach(o=>{
-    const asset=matchAssetNameFromScenario(o,assetNames);
-    const full=scenarioFullFromRow(o);
-    if(!asset||!full){skipped++;return}
-    const matched=assetNames.includes(asset);
-    if(!matched) estimated++;
-    const axis=val(o,['訴求軸','訴求','axis','Axis'])||inferAxisFromText(full);
-    const dur=val(o,['動画尺','尺','再生時間','duration','Duration'])||'16〜30秒';
-    const target=val(o,['ターゲット','ペルソナ','target','Target'])||'';
-    scenarios[asset]={asset,axis,dur,target,full,struct:structure(full,axis,dur),source:sourceLabel};
-    imported++;
+function selectKpi(v){
+  _selectedKpi = v;
+  ['reg_rate','install_rate','ctr','roas'].forEach(k=>{
+    document.getElementById('kpi-card-'+k).classList.toggle('selected', k===v);
   });
-  saveState();renderAll();
-  return {imported,skipped,estimated};
 }
-async function importGoogleSheetBundle(){
-  const url=document.getElementById('gsheet-url').value.trim();
-  const reportSheet=document.getElementById('gsheet-report-sheet').value.trim()||'バチェラー日次数値';
-  const scenarioSheet=document.getElementById('gsheet-scenario-sheet').value.trim()||'シナリオ';
-  const status=document.getElementById('scenario-import-status');
-  if(!url){alert('スプレッドシートURLを入力してください');return}
-  status.textContent='スプレッドシート読込中...';
-  try{
-    const reportRows=await fetchSheetRows(url,reportSheet);
-    rawRows=rowsToObjects(reportRows);
-    aggregate();
-    const scenarioRows=await fetchSheetRows(url,scenarioSheet);
-    const result=importScenarioObjects(rowsToObjects(scenarioRows),`Google Sheets:${scenarioSheet}`);
-    document.getElementById('file-status').textContent=`Google Sheets読込：${reportSheet}`;
-    document.getElementById('import-preview').textContent=`${reportSheet}: ${rawRows.length}行\n${scenarioSheet}: 登録 ${result.imported}件 / スキップ ${result.skipped}件 / 推定紐付け ${result.estimated}件`;
-    status.textContent=`読込完了：数値 ${rawRows.length}行 / シナリオ登録 ${result.imported}件`;
-    showTab('dash');
-  }catch(e){
-    status.textContent='読込エラー';
-    alert('スプレッドシートを読み込めませんでした。共有設定が「リンクを知っている全員が閲覧可」になっているか確認してください。\n\n' + e.message);
+function openProjectSettings(){
+  document.getElementById('ps-modal-sub').textContent=`案件「${state.current}」の設定`;
+  document.getElementById('ps-unit-price').value=unitPrice!=null?unitPrice:'';
+  _selectedKpi = primaryKpi; // 現在値を変数に同期してからカードを更新
+  selectKpi(primaryKpi);
+  document.getElementById('ps-modal').classList.remove('hidden');
+}
+function closeProjectSettings(){
+  document.getElementById('ps-modal').classList.add('hidden');
+}
+function saveProjectSettings(){
+  const raw=document.getElementById('ps-unit-price').value.trim();
+  const parsed=parseFloat(raw.replace(/[,，円\s]/g,''));
+  unitPrice=isNaN(parsed)||raw===''?null:parsed;
+  primaryKpi=_selectedKpi;
+  renderFixedSettings(); aggregate(); renderAll(); saveState();
+  closeProjectSettings();
+}
+
+// ── CSV パース & 読込 ──
+function parseCSV(text){
+  const rows=[];let row=[],cell='',q=false;
+  for(let i=0;i<text.length;i++){const c=text[i],n=text[i+1];if(q){if(c==='"'&&n==='"'){cell+='"';i++}else if(c==='"'){q=false}else cell+=c}else{if(c==='"')q=true;else if(c===','){row.push(cell);cell=''}else if(c==='\n'){row.push(cell);rows.push(row);row=[];cell=''}else if(c==='\r'){}else cell+=c}}
+  if(cell!==''||row.length){row.push(cell);rows.push(row)}
+  return rows.filter(r=>r.some(c=>String(c).trim()!==''));
+}
+function handleFile(e){
+  const f=e.target.files[0]; if(!f)return;
+  const reader=new FileReader();
+  reader.onload=()=>{
+    const rows=parseCSV(reader.result);
+    if(rows.length<2){alert('CSVを読み取れませんでした');return}
+    const head=rows[0].map(h=>h.trim());
+    rawRows=rows.slice(1).map(r=>{const o={};head.forEach((h,i)=>o[h]=r[i]??'');return o});
+    state.projects[state.current].lastFile=f.name;
+
+    // 列認識チェック
+    const found={};
+    Object.entries(COL).forEach(([k,names])=>{
+      const hit=names.find(n=>head.includes(n));
+      found[k]=hit||'（未認識）';
+    });
+    const skipped=rawRows.filter(isSummaryRow).length;
+
+    aggregate(); renderAll();
+    document.getElementById('file-status').textContent=`読込済：${f.name}`;
+    document.getElementById('import-preview').textContent=
+      `ファイル：${f.name}\nデータ行：${rawRows.length}行（合計行スキップ：${skipped}件）\n\n`+
+      `【認識した列】\n`+
+      Object.entries(found).map(([k,v])=>`  ${k}: "${v}"`).join('\n')+
+      `\n\n【全列名】\n${head.join(' / ')}`;
+    saveState(); showTab('dash');
+  };
+  reader.readAsText(f,'utf-8');
+}
+
+// ── ユーティリティ ──
+function val(row,names){for(const n of names){if(row[n]!=null&&row[n]!=='')return row[n]}return ''}
+function toNum(v){if(v==null)return 0;const s=String(v).replace(/[¥,%\s,]/g,'');const n=parseFloat(s);return isNaN(n)?0:n}
+function parseDateFromRow(r){const s=val(r,COL.date);if(!s)return null;const m=String(s).match(/(20\d{2})[-/](\d{1,2})[-/](\d{1,2})/);if(!m)return null;return new Date(+m[1],+m[2]-1,+m[3]);}
+function rowInDateRange(r){if(!confStart&&!confEnd)return true;const d=parseDateFromRow(r);if(!d)return true;const lo=confStart||new Date(-8640000000000000),hi=confEnd||new Date(8640000000000000);return d>=lo&&d<=hi;}
+
+// ── 集計 ──
+// TikTok CSVの列名候補（日本語・英語両対応）
+const COL={
+  asset:  ['クリエイティブアセット名','Creative asset name','クリエイティブアセット名称','アセット名'],
+  spend:  ['コスト','Cost','消化金額','ご利用金額','spend','Spend'],
+  imp:    ['インプレッション','Impressions','表示回数','インプレッション数'],
+  click:  ['クリック（誘導先）','クリック数（誘導先）','クリック','Clicks(destination)','Clicks','Click','clicks'],
+  install:['コンバージョン時間ごとのアプリインストール','アプリインストール','Install','Installs','インストール','app_install'],
+  cv:     ['コンバージョン','Conversions','会員登録数','登録数','CV','conversions'],
+  date:   ['日','日別','日付','Day','date','Date','週別'],
+};
+
+function isSummaryRow(r){
+  // アセット名が空・"-"・"合計"・"Total"の行はTikTokの合計行なのでスキップ
+  const name=val(r,COL.asset)||val(r,['広告名','Ad name'])||'';
+  return !name || name==='-' || name==='合計' || name.toLowerCase()==='total' || name==='–';
+}
+
+function aggregate(){
+  const map={};
+  rawRows.filter(rowInDateRange).forEach((r,i)=>{
+    if(isSummaryRow(r)) return; // 合計行をスキップ
+    const assetName=val(r,COL.asset)||val(r,['広告名','Ad name'])||`未命名_${i+1}`;
+    const key=assetName;
+    if(!map[key])map[key]={assetName:key,rows:0,spend:0,impressions:0,clicks:0,installs:0,rawConversions:0};
+    const a=map[key]; a.rows++;
+    a.spend+=toNum(val(r,COL.spend));
+    a.impressions+=toNum(val(r,COL.imp));
+    a.clicks+=toNum(val(r,COL.click));
+    a.installs+=toNum(val(r,COL.install));
+    a.rawConversions+=toNum(val(r,COL.cv));
+  });
+  ads=Object.values(map);
+  ads.forEach(calcDerived);
+  judgeAds();
+}
+function calcDerived(a){
+  const cvManual=manualRegs[a.assetName];
+  a.registrations=cvManual??null;
+  const cv=(cvManual!=null)?cvManual:(a.rawConversions||a.installs||0);
+  a.cv=cv;
+  a.cpm=a.impressions?a.spend/a.impressions*1000:0;
+  a.ctr=a.impressions?a.clicks/a.impressions*100:0;
+  a.cpc=a.clicks?a.spend/a.clicks:0;
+  a.cpi=cv?a.spend/cv:0;
+  a.install_rate=a.clicks?cv/a.clicks*100:0;
+  a.reg_rate=a.install_rate;
+  // 売上・利益・ROASは「手動で会員登録数を入力した行」のみ計算
+  const regForCalc = cvManual!=null ? cvManual : null;
+  a.revenue = (unitPrice!=null && regForCalc!=null && regForCalc>0) ? unitPrice*regForCalc : null;
+  a.profit  = a.revenue!=null ? a.revenue-a.spend : null;
+  a.roas    = (a.revenue!=null && a.spend) ? a.revenue/a.spend : null;
+  // シナリオマスタと照合
+  a.scenario=state.scenarioMaster[a.assetName]||null;
+}
+function judgeAds(){
+  const vals=ads.map(a=>a[primaryKpi]).filter(v=>v!=null&&!isNaN(v)&&v>0);
+  const avg=vals.length?vals.reduce((s,v)=>s+v,0)/vals.length:0;
+  ads.forEach(a=>{const v=a[primaryKpi];a.judge=!avg||!v?'mid':v>=avg*1.25?'win':v<=avg*.7?'lose':'mid'});
+}
+
+// ── 描画 ──
+function showTab(t){
+  ['dash','scenario','cross','idea','score','import'].forEach(x=>{
+    document.getElementById('tab-'+x).classList.toggle('hidden',x!==t);
+    document.getElementById('t-'+x).classList.toggle('active',x===t);
+  });
+  if(t==='cross')renderCross();
+  if(t==='idea')generateIdeas(false);
+  if(t==='scenario')renderMaster();
+}
+function renderAll(){renderDash();if(!document.getElementById('tab-scenario').classList.contains('hidden'))renderMaster();renderCross();generateIdeas(false);}
+
+function renderDash(){
+  const ts=ads.reduce((s,a)=>s+a.spend,0);
+  const timp=ads.reduce((s,a)=>s+a.impressions,0);
+  const tc=ads.reduce((s,a)=>s+a.clicks,0);
+  const ti=ads.reduce((s,a)=>s+a.cv,0);
+  const tv=ads.reduce((s,a)=>s+(a.revenue||0),0);
+  const tp=ads.reduce((s,a)=>s+(a.profit||0),0);
+  const tCpm=timp?ts/timp*1000:null;
+  const tCtr=timp?tc/timp*100:null;
+  const tCvr=tc?ti/tc*100:null;
+  const tRoas=tv&&ts?tv/ts:null;
+  document.getElementById('kpis').innerHTML=[
+    ['案件',  state.current],
+    ['Cost',  yen(ts)],
+    ['Imp',   num(timp)],
+    ['CPM',   tCpm!=null?yen(tCpm):'-'],
+    ['Click', num(tc)],
+    ['CTR',   tCtr!=null?tCtr.toFixed(2)+'%':'-'],
+    ['CV',    num(ti)],
+    ['CVR',   tCvr!=null?tCvr.toFixed(2)+'%':'-'],
+    ['CPA',   ti?yen(ts/ti):'-'],
+    ['売上',  tv?yen(tv):'-'],
+    ['利益',  ads.some(a=>a.profit!=null)?yen(tp):'-'],
+    ['ROAS',  roas(tRoas)],
+  ].map(x=>`<div class="kpi"><div class="kl">${x[0]}</div><div class="kv" style="font-size:${String(x[1]).length>9?'15px':String(x[1]).length>6?'17px':'20px'}">${x[1]}</div></div>`).join('');
+  const tb=document.getElementById('dash-body');
+  if(!ads.length){tb.innerHTML='<tr><td colspan="17"><div class="empty">右上の「CSV読込」からTikTokレポートを読み込んでください</div></td></tr>';return}
+  tb.innerHTML=ads.map(a=>{
+    const bc=a.judge==='win'?'bw':a.judge==='lose'?'bl':'bm';
+    const bt=a.judge==='win'?'勝ち':a.judge==='lose'?'負け':'要観察';
+    const sc=a.scenario;
+    const scCell=sc
+      ? `<span class="badge bw">登録済</span><br><span class="small">${esc(sc.axis||'')} ${esc(sc.dur||'')}</span>`
+      : `<span class="badge bm">未登録</span>`;
+    return `<tr>
+      <td><strong>${esc(a.assetName)}</strong></td>
+      <td>${yen(a.spend)}</td><td>${num(a.impressions)}</td><td>${yen(a.cpm)}</td>
+      <td>${num(a.clicks)}</td><td>${pct(a.ctr)}</td><td>${yen(a.cpc)}</td>
+      <td>${num(a.cv)}</td><td>${yen(a.cpi)}</td><td>${pct(a.reg_rate)}</td>
+      <td>
+        <input type="number" class="inp" style="width:86px;text-align:right;padding:4px 6px" value="${manualRegs[a.assetName]??''}" placeholder="任意" onchange="setReg(${JSON.stringify(a.assetName)},this.value)">
+        <br><span class="small">CSV:${num(a.rawConversions||a.installs)}</span>
+      </td>
+      <td>${yen(a.revenue)}</td><td>${yen(a.profit)}</td><td>${roas(a.roas)}</td>
+      <td>${scCell}</td>
+      <td><span class="badge ${bc}">${bt}</span></td>
+    </tr>`;
+  }).join('');
+
+  // 合計・平均行
+  const sumSpend=ads.reduce((s,a)=>s+a.spend,0);
+  const sumImp=ads.reduce((s,a)=>s+a.impressions,0);
+  const sumClick=ads.reduce((s,a)=>s+a.clicks,0);
+  const sumCv=ads.reduce((s,a)=>s+a.cv,0);
+  const sumRev=ads.reduce((s,a)=>s+(a.revenue||0),0);
+  const sumProfit=ads.reduce((s,a)=>s+(a.profit||0),0);
+  const totalCpm=sumImp?sumSpend/sumImp*1000:null;
+  const totalCtr=sumImp?sumClick/sumImp*100:null;
+  const totalCpc=sumClick?sumSpend/sumClick:null;
+  const totalCpi=sumCv?sumSpend/sumCv:null;
+  const totalCvr=sumClick?sumCv/sumClick*100:null;
+  const totalRoas=sumSpend&&sumRev?sumRev/sumSpend:null;
+  tb.innerHTML+=`<tr style="background:var(--sub);font-weight:700;border-top:2px solid var(--bd)">
+    <td>合計 / 平均</td>
+    <td>${yen(sumSpend)}</td>
+    <td>${num(sumImp)}</td>
+    <td>${totalCpm!=null?yen(totalCpm):'-'}</td>
+    <td>${num(sumClick)}</td>
+    <td>${totalCtr!=null?totalCtr.toFixed(2)+'%':'-'}</td>
+    <td>${totalCpc!=null?yen(totalCpc):'-'}</td>
+    <td>${num(sumCv)}</td>
+    <td>${totalCpi!=null?yen(totalCpi):'-'}</td>
+    <td>${totalCvr!=null?totalCvr.toFixed(2)+'%':'-'}</td>
+    <td style="color:var(--muted);font-size:11px;font-weight:400">—</td>
+    <td>${sumRev?yen(sumRev):'-'}</td>
+    <td>${ads.some(a=>a.profit!=null)?yen(sumProfit):'-'}</td>
+    <td>${totalRoas!=null?roas(totalRoas):'-'}</td>
+    <td>—</td>
+    <td>—</td>
+  </tr>`;
+}
+function setReg(asset,v){
+  manualRegs[asset]=v===''?null:parseInt(v,10);
+  if(manualRegs[asset]==null)delete manualRegs[asset];
+  aggregate(); renderAll(); saveState();
+}
+
+// ── シナリオマスタ描画 ──
+function renderMaster(){
+  const master=state.scenarioMaster||{};
+  const keys=Object.keys(master);
+  const linkedKeys=new Set(ads.map(a=>a.assetName));
+
+  document.getElementById('master-count').textContent=`シナリオマスタ：全 ${keys.length} 件`;
+
+  if(!keys.length){
+    document.getElementById('scenario-master-list').innerHTML='<div class="card"><div class="empty">シナリオが未登録です。「スプレッドシートから一括読込」または「シナリオを手動追加」してください。</div></div>';
+    return;
   }
+
+  // CSV読込済アセット名をヒントとして表示
+  const assetHints=ads.length?`<div class="warn" style="margin-bottom:14px">現在のCSVに含まれるアセット名（${ads.length}件）：${ads.map(a=>`<code style="background:var(--sub);padding:1px 5px;border-radius:4px;margin:1px">${esc(a.assetName)}</code>`).join(' ')}</div>`:'';
+
+  document.getElementById('scenario-master-list').innerHTML=assetHints+keys.map(k=>{
+    const s=master[k];
+    const isLinked=linkedKeys.has(k);
+    const ad=ads.find(a=>a.assetName===k);
+    const jb=ad?`<span class="badge ${ad.judge==='win'?'bw':ad.judge==='lose'?'bl':'bm'}">${ad.judge==='win'?'勝ち':ad.judge==='lose'?'負け':'要観察'}</span>`:'';
+    return `<div class="sc-master-card ${isLinked?'linked':'unlinked'}">
+      <div style="display:flex;justify-content:space-between;align-items:start;gap:10px;margin-bottom:8px">
+        <div>
+          <strong>${esc(k)}</strong>
+          <span class="link-badge ${isLinked?'link-ok':'link-no'}" style="margin-left:6px">${isLinked?'✓ 数値と紐付き中':'数値未読込'}</span>
+          ${jb?`<span style="margin-left:4px">${jb}</span>`:''}
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <button class="btn" style="font-size:11px;padding:4px 9px" onclick="duplicateScenario(${JSON.stringify(k)})">複製</button>
+          <button class="btn" style="font-size:11px;padding:4px 9px" onclick="editScenario(${JSON.stringify(k)})">編集</button>
+          <button class="btn" style="font-size:11px;padding:4px 9px" onclick="deleteScenario(${JSON.stringify(k)})">削除</button>
+        </div>
+      </div>
+      <div class="pillrow" style="margin-bottom:6px">
+        ${s.axis?`<span class="tag">${esc(s.axis)}</span>`:''}
+        ${s.dur?`<span class="tag">${esc(s.dur)}</span>`:''}
+        ${s.target?`<span class="tag">${esc(s.target)}</span>`:''}
+        ${(s.struct?.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join('')}
+      </div>
+      ${s.struct?`<div class="small"><strong>Hook:</strong> ${esc(s.struct.hook)}</div>`:''}
+      ${s.full?`<details style="margin-top:6px"><summary class="small" style="cursor:pointer;color:var(--blue)">シナリオ全文を表示</summary><pre style="margin-top:6px;font-size:12px;line-height:1.7;white-space:pre-wrap;word-break:break-word;background:var(--sub);border-radius:8px;padding:10px;font-family:inherit">${esc(s.full)}</pre></details>`:''}
+    </div>`;
+  }).join('');
 }
 
-function handleScenarioFile(e){const f=e.target.files[0];if(!f)return;const reader=new FileReader();reader.onload=()=>{const rows=parseSheet(reader.result);if(rows.length<2){alert('シナリオ用CSV/TSVを読み取れませんでした');return}const result=importScenarioObjects(rowsToObjects(rows),f.name);document.getElementById('scenario-import-status').textContent=`読込済：${f.name} / 登録 ${result.imported}件 / スキップ ${result.skipped}件 / 推定紐付け ${result.estimated}件`;showTab('scenario')};reader.readAsText(f,'utf-8');}
+// ── シナリオマスタ操作 ──
+function openAddScenarioModal(prefill){
+  document.getElementById('add-modal').classList.remove('hidden');
+  document.getElementById('add-cr-name').value=prefill||'';
+  document.getElementById('add-axis').value='感情訴求';
+  document.getElementById('add-target').value='';
+  document.getElementById('add-dur').value='16〜30秒';
+  document.getElementById('add-full').value='';
+  updateCrHint();
+  document.getElementById('add-cr-name').oninput=updateCrHint;
+}
+function updateCrHint(){
+  const v=document.getElementById('add-cr-name').value.trim();
+  const hint=document.getElementById('add-cr-hint');
+  if(!v){hint.textContent='';return}
+  const matched=ads.find(a=>a.assetName===v);
+  hint.innerHTML=matched
+    ? `<span style="color:var(--win)">✓ CSVのアセット名と一致します → 登録後すぐ紐付きます</span>`
+    : ads.length
+      ? `<span style="color:var(--mid)">⚠ 現在のCSVに同名のアセットがありません（後でCSVを読み込めば自動紐付けされます）</span>`
+      : '<span style="color:var(--muted)">CSVを読み込むと紐付け確認できます</span>';
+}
+function closeAddModal(){document.getElementById('add-modal').classList.add('hidden');}
+function saveManualScenario(){
+  const cr=document.getElementById('add-cr-name').value.trim();
+  if(!cr){alert('CR名を入力してください');return}
+  const full=document.getElementById('add-full').value.trim();
+  const axis=document.getElementById('add-axis').value;
+  const dur=document.getElementById('add-dur').value;
+  const target=document.getElementById('add-target').value.trim();
+  state.scenarioMaster[cr]={cr,axis,dur,target,full,struct:structure(full,axis,dur)};
+  saveState(); aggregate(); renderAll();
+  closeAddModal();
+}
+function duplicateScenario(cr){
+  const s=state.scenarioMaster[cr]; if(!s) return;
+  // マスタには保存せず、モーダルだけ開いてCR名を編集させる
+  document.getElementById('add-modal').classList.remove('hidden');
+  document.getElementById('add-cr-name').value = cr+'_コピー';
+  document.getElementById('add-axis').value   = s.axis||'感情訴求';
+  document.getElementById('add-target').value  = s.target||'';
+  document.getElementById('add-dur').value     = s.dur||'16〜30秒';
+  document.getElementById('add-full').value    = s.full||'';
+  updateCrHint();
+  document.getElementById('add-cr-name').oninput = updateCrHint;
+}
+function editScenario(cr){
+  const s=state.scenarioMaster[cr]; if(!s)return;
+  document.getElementById('add-modal').classList.remove('hidden');
+  document.getElementById('add-cr-name').value=cr;
+  document.getElementById('add-axis').value=s.axis||'感情訴求';
+  document.getElementById('add-target').value=s.target||'';
+  document.getElementById('add-dur').value=s.dur||'16〜30秒';
+  document.getElementById('add-full').value=s.full||'';
+  updateCrHint();
+  document.getElementById('add-cr-name').oninput=updateCrHint;
+}
+function deleteScenario(cr){
+  if(!confirm(`「${cr}」のシナリオをマスタから削除しますか？`))return;
+  delete state.scenarioMaster[cr];
+  saveState(); aggregate(); renderAll();
+}
 
+// ── シナリオ構造分解 ──
+function inferAxisFromText(t){if(/比較|違い|より|今まで|前は/.test(t))return '比較訴求';if(/不安|しんどい|疲れ|悩|怖|面倒|困/.test(t))return '課題解決';if(/無料|安|価格|円|割引/.test(t))return '価格訴求';if(/審査|AI|機能|自動|調整|防止/.test(t))return '機能訴求';if(/口コミ|レビュー|みんな|人気|実績/.test(t))return '社会的証明';return 'その他'}
+function structure(script,axis='',dur=''){
+  const t=(script||'').trim();const lines=t.split(/\n+/).map(x=>x.trim()).filter(Boolean);const first=lines[0]||t.slice(0,50);
+  const tags=[];
+  if(/[？?]/.test(first))tags.push('問いかけフック');if(/俺|私|僕|正直|思った|使ってみた/.test(t))tags.push('UGC独白');if(/めんど|しんど|疲れ|無駄|会えない|不安|怖|焦/.test(t))tags.push('課題共感');if(/AI|日程|メッセージ|審査|身バレ|自動|計画書|エージェント|間取り/.test(t))tags.push('機能提示');if(/だから|そこで|試し|使ってみた/.test(t))tags.push('解決導入');if(/無料|今すぐ|登録|始め|予約|相談/.test(t))tags.push('CTA明示');if(/周り|友達|既婚|彼女|結婚|家族|子ども|年収|仕事/.test(t))tags.push('生活文脈');if(/比べ|前より|今まで|普通の/.test(t))tags.push('比較構造');
+  if(axis)tags.push(axis);if(dur)tags.push(dur);
+  return{hook:first.slice(0,80),empathy:extract(t,/([^。\n]*(めんど|しんど|疲れ|無駄|会えない|不安|怖|焦)[^。\n]*)/),solution:extract(t,/([^。\n]*(だから|そこで|使ってみた|試してみた|バチェラーデート|キミナラ|タウンライフ)[^。\n]*)/),cta:extract(t,/([^。\n]*(無料|今すぐ|登録|始め|予約|相談|試して)[^。\n]*)/),tags:[...new Set(tags)],length:t.length}
+}
+function extract(t,re){const m=t.match(re);return m?m[1].slice(0,100):'未抽出'}
+
+// ── スプレッドシート読込 ──
+function colToIdx(col){col=col.trim().toUpperCase();let idx=0;for(let i=0;i<col.length;i++)idx=idx*26+(col.charCodeAt(i)-64);return idx-1;}
+function extractSheetId(url){const m=url.match(/\/spreadsheets\/d\/([a-zA-Z0-9_-]+)/);return m?m[1]:null;}
+function openSheetModal(){
+  document.getElementById('sheet-modal').classList.remove('hidden');
+  const saved=state.projects[state.current]?.sheetUrl||'';
+  document.getElementById('sheet-url-input').value=saved;
+  document.getElementById('sheet-name-input').value='シナリオ';
+  document.getElementById('sheet-asset-col').value='D';
+  document.getElementById('sheet-scenario-col').value='C';
+  document.getElementById('sheet-status').innerHTML='';
+}
+function closeSheetModal(){document.getElementById('sheet-modal').classList.add('hidden');}
+async function loadFromSheet(){
+  const url=document.getElementById('sheet-url-input').value.trim();
+  const sheetName=document.getElementById('sheet-name-input').value.trim()||'シナリオ';
+  const assetColIdx=colToIdx(document.getElementById('sheet-asset-col').value||'D');
+  const scenarioColIdx=colToIdx(document.getElementById('sheet-scenario-col').value||'C');
+  const statusEl=document.getElementById('sheet-status');
+  const sheetId=extractSheetId(url);
+  if(!sheetId){statusEl.innerHTML='<span class="status-err">URLからIDを取得できませんでした</span>';return}
+  statusEl.innerHTML='<span class="status-loading"><i class="ti ti-loader"></i> 取得中...</span>';
+  try{
+    const csvUrl=`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(sheetName)}`;
+    const res=await fetch(csvUrl);
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    const text=await res.text();
+    if(!text||text.includes('<!DOCTYPE'))throw new Error('シートを取得できませんでした。スプレッドシートを「リンクを知っている全員が閲覧可能」に設定してください。');
+    const rows=parseCSV(text);
+    if(rows.length<2)throw new Error('データが見つかりませんでした。シート名を確認してください。');
+    let added=0,skipped=0,updated=0;
+    rows.forEach((row,i)=>{
+      if(i<1)return; // 1行目ヘッダーをスキップ
+      const cr=String(row[assetColIdx]??'').trim();
+      const full=String(row[scenarioColIdx]??'').trim();
+      if(!cr||!full){skipped++;return}
+      const axis=inferAxisFromText(full);
+      if(state.scenarioMaster[cr]){updated++}else{added++}
+      state.scenarioMaster[cr]={cr,axis,dur:'16〜30秒',target:'',full,struct:structure(full,axis,'16〜30秒')};
+    });
+    state.projects[state.current].sheetUrl=url;
+    saveState(); aggregate(); renderAll();
+    statusEl.innerHTML=`<span class="status-ok">✓ 完了：新規追加 ${added}件 / 更新 ${updated}件 / スキップ ${skipped}件</span>`;
+    setTimeout(()=>{closeSheetModal();showTab('scenario');},1800);
+  }catch(err){statusEl.innerHTML=`<span class="status-err">エラー：${esc(err.message)}</span>`;}
+}
+
+// ── 横断分析・広告案・スコア ──
+function tagStats(group){const cnt={};group.forEach(a=>{const st=a.scenario?.struct;if(st)st.tags.forEach(t=>cnt[t]=(cnt[t]||0)+1)});return Object.entries(cnt).sort((a,b)=>b[1]-a[1])}
+function renderCross(){
+  const win=ads.filter(a=>a.judge==='win'),lose=ads.filter(a=>a.judge==='lose'),mid=ads.filter(a=>a.judge==='mid');
+  const avg=(arr,k)=>arr.length?arr.reduce((s,a)=>s+(a[k]||0),0)/arr.length:null;
+  const wtags=tagStats(win),ltags=tagStats(lose);
+  let out=`【案件】${state.current}\n【期間】${document.getElementById('dr-label').textContent}\n\n勝ち：${win.length}件 / 負け：${lose.length}件 / 要観察：${mid.length}件\n\n`;
+  out+=`■ 勝ち広告平均\nCTR：${pct(avg(win,'ctr'))} / CVR：${pct(avg(win,'reg_rate'))} / CPA：${yen(avg(win,'cpi'))} / ROAS：${roas(avg(win,'roas'))}\n\n`;
+  out+=`■ 負け広告平均\nCTR：${pct(avg(lose,'ctr'))} / CVR：${pct(avg(lose,'reg_rate'))} / CPA：${yen(avg(lose,'cpi'))} / ROAS：${roas(avg(lose,'roas'))}\n\n`;
+  out+=`■ 勝ち広告に多い構造タグ\n${wtags.length?wtags.slice(0,8).map(x=>`・${x[0]}：${x[1]}件`).join('\n'):'シナリオ登録後に表示'}\n\n`;
+  out+=`■ 負け広告に多い構造タグ\n${ltags.length?ltags.slice(0,8).map(x=>`・${x[0]}：${x[1]}件`).join('\n'):'シナリオ登録後に表示'}\n\n`;
+  out+=`■ PDCA仮説\n・CTR高/CVR低：冒頭フックとLP/登録動機のズレを確認。\n・CTR低/CVR高：訴求は合っているためフック・冒頭画を差し替え。\n・勝ち側で多い構造タグを残し、冒頭3秒だけを変えて横展開。`;
+  document.getElementById('cross-result').textContent=out;
+}
+function winPattern(){return [...new Set(ads.filter(a=>a.judge==='win').map(a=>a.scenario?.struct).filter(Boolean).flatMap(s=>s.tags))]}
+function generateIdeas(show=true){
+  const tags=winPattern();
+  let txt=`【案件】${state.current}\n勝ちパターン：${tags.length?tags.join(' / '):'シナリオ登録後に精度が上がります'}\n\n`;
+  txt+=`案1：問いかけ×課題共感\nHook：今の悩みに合わせた「自分ごと化」できる問いかけから入る。\n構成：悩みの具体描写 → 既存手段の不満 → サービスで解決できる理由 → 無料/相談CTA\n\n`;
+  txt+=`案2：UGC独白×比較\nHook：普通に使っていた方法への違和感を一言で出す。\n構成：Before → 失敗/面倒 → 試したきっかけ → 使ってラクになった点 → CTA\n\n`;
+  txt+=`案3：生活文脈×未来回避\nHook：このままだと困る未来を日常描写で提示。\n構成：現状の不安 → 放置した場合の損失 → 今すぐ軽く試せる行動 → CTA`;
+  document.getElementById('idea-result').textContent=txt;
+}
+function simTags(tags,winTags){if(!winTags.length)return 0;const set=new Set(tags);return winTags.filter(t=>set.has(t)).length/winTags.length}
+function scoreDraft(){
+  const full=document.getElementById('pre-script').value,axis=document.getElementById('pre-axis').value,dur=document.getElementById('pre-dur').value;
+  const st=structure(full,axis,dur),tags=winPattern(),sim=simTags(st.tags,tags);
+  let score=45+Math.round(sim*35);
+  if(st.tags.includes('問いかけフック'))score+=8;if(st.tags.includes('課題共感'))score+=7;if(st.tags.includes('CTA明示'))score+=5;if(st.length<40)score-=10;if(st.length>900)score-=8;
+  score=Math.max(0,Math.min(100,score));
+  document.getElementById('score-result').innerHTML=`<div class="card"><div class="sec">予測スコア：${score}/100</div><div class="score"><div class="scoreb" style="width:${score}%"></div></div><div class="pillrow" style="margin-top:10px">${st.tags.map(t=>`<span class="tag">${esc(t)}</span>`).join('')}</div><div class="small" style="margin-top:10px"><strong>勝ちパターン類似度：</strong>${Math.round(sim*100)}%<br><strong>Hook：</strong>${esc(st.hook)}<br><strong>改善候補：</strong>${score<70?'冒頭3秒を問いかけ型にし、課題共感→解決導入→CTAの順番を明確にしてください。':'勝ちパターンに近い構成です。次はフックだけ2〜3案に分けて検証してください。'}</div></div>`;
+}
+function buildPrompt(){
+  const data=ads.map(a=>{const s=a.scenario;return `【${a.assetName}】\nCost:${a.spend} / Imp:${a.impressions} / Click:${a.clicks} / CTR:${pct(a.ctr)} / CV:${a.cv} / CVR:${pct(a.reg_rate)} / CPA:${yen(a.cpi)} / ROAS:${roas(a.roas)} / 判定:${a.judge}\n構造:${s?JSON.stringify(s.struct):'未登録'}\nシナリオ:${s?s.full:'未登録'}`}).join('\n---\n');
+  return `あなたはTikTok広告のクリエイティブ分析専門家です。案件「${state.current}」についてクリエイティブアセット名単位で分析してください。\n1. 勝ち広告・負け広告の横断比較\n2. シナリオ構造の勝ちパターン\n3. 次に作るべき広告案3本\n\n${data}`;
+}
+function copyPrompt(){navigator.clipboard.writeText(buildPrompt()).then(()=>alert('コピーしました'))}
+function exportGroupedCsv(){
+  if(!ads.length)return;
+  const head=['案件','クリエイティブアセット名','Cost','Imp','Click','CTR','CV','CVR','CPA','ROAS','シナリオ登録','判定'];
+  const rows=ads.map(a=>[state.current,a.assetName,a.spend,a.impressions,a.clicks,a.ctr,a.cv,a.reg_rate,a.cpi,a.roas,a.scenario?'登録済':'未登録',a.judge]);
+  const csv=[head,...rows].map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob(['\uFEFF'+csv],{type:'text/csv'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`${state.current}_report.csv`;a.click();URL.revokeObjectURL(url);
+}
+
+// ── カレンダー ──
+function today0(){const d=new Date();d.setHours(0,0,0,0);return d}function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r}function fmtD(d){return d?`${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`:''} function sameDay(a,b){return a&&b&&a.getFullYear()===b.getFullYear()&&a.getMonth()===b.getMonth()&&a.getDate()===b.getDate()}
+function initCalMonths(){
+  const t=confStart||today0();
+  calLY=t.getFullYear(); calLM=t.getMonth();
+  const nx=new Date(t.getFullYear(),t.getMonth()+1,1);
+  calRY=nx.getFullYear(); calRM=nx.getMonth();
+  // 選択状態を現在の確定値で初期化、picking はリセット
+  pickStart=confStart; pickEnd=confEnd; picking=false; hovDate=null;
+}
+function renderCals(){renderOneCal('L',calLY,calLM);renderOneCal('R',calRY,calRM);document.getElementById('ctl-L').textContent=`${calLY} ${MONTHS[calLM]}`;document.getElementById('ctl-R').textContent=`${calRY} ${MONTHS[calRM]}`;const s=pickStart,e=pickEnd||hovDate;const lo=s&&e&&s>e?e:s,hi=s&&e&&s>e?s:e;document.getElementById('dr-sel').textContent=lo&&hi&&!sameDay(lo,hi)?`${fmtD(lo)} 〜 ${fmtD(hi)}`:lo?fmtD(lo):'全期間';}
+function renderOneCal(side,y,m){const grid=document.getElementById('cal-'+side);const first=new Date(y,m,1),last=new Date(y,m+1,0),t=today0();let h=DOW.map(d=>`<div class="dow">${d}</div>`).join('');for(let i=0;i<first.getDay();i++)h+=cell(new Date(y,m,1-first.getDay()+i),true,t);for(let d=1;d<=last.getDate();d++)h+=cell(new Date(y,m,d),false,t);for(let i=1;i<7-last.getDay();i++)h+=cell(new Date(y,m+1,i),true,t);grid.innerHTML=h;}
+function cell(d,other,t){const s=pickStart,e=pickEnd||hovDate;const lo=s&&e&&s>e?e:s,hi=s&&e&&s>e?s:e;const isSel=sameDay(d,pickStart)||sameDay(d,pickEnd);const inR=lo&&hi&&d>lo&&d<hi;let cls='day'+(other?' other':'')+(isSel?' sel':inR?' range':'')+(sameDay(d,t)&&!isSel?' today':'');return `<div class="${cls}" onclick="pickDay(${d.getFullYear()},${d.getMonth()},${d.getDate()})" onmouseover="hoverDay(${d.getFullYear()},${d.getMonth()},${d.getDate()})">${d.getDate()}</div>`}
+function toggleCal(){const p=document.getElementById('dr-panel');if(p.classList.contains('open'))p.classList.remove('open');else{initCalMonths();renderCals();p.classList.add('open')}}function closeCal(){document.getElementById('dr-panel').classList.remove('open')}function navCal(dir,side){if(side==='L'){calLM+=dir;if(calLM<0){calLM=11;calLY--}if(calLM>11){calLM=0;calLY++}}else{calRM+=dir;if(calRM<0){calRM=11;calRY--}if(calRM>11){calRM=0;calRY++}}renderCals()}
+function pickDay(y,m,d){
+  const c=new Date(y,m,d);
+  if(!pickStart || pickEnd || !picking){
+    // 開始日をセット、終了日をリセット
+    pickStart=c; pickEnd=null; picking=true;
+  } else {
+    // 2回目クリック → 終了日セット
+    if(c<pickStart){pickEnd=pickStart;pickStart=c;}
+    else if(sameDay(c,pickStart)){pickEnd=c;} // 同じ日をクリック→同日選択
+    else{pickEnd=c;}
+    picking=false;
+  }
+  renderCals();
+}function hoverDay(y,m,d){if(picking&&pickStart){hovDate=new Date(y,m,d);renderCals()}}
+function applyPreset(p){const t=today0();let s,e;if(p==='today'){s=t;e=t}else if(p==='yesterday'){s=addDays(t,-1);e=addDays(t,-1)}else if(p==='7d'){s=addDays(t,-6);e=t}else if(p==='14d'){s=addDays(t,-13);e=t}else if(p==='30d'){s=addDays(t,-29);e=t}else if(p==='thismonth'){s=new Date(t.getFullYear(),t.getMonth(),1);e=t}pickStart=s;pickEnd=e;picking=false;renderCals()}function confirmCal(){confStart=pickStart;confEnd=pickEnd||pickStart;closeCal();updateDateLabel();aggregate();renderAll();saveState()}function clearDateRange(){confStart=null;confEnd=null;pickStart=null;pickEnd=null;closeCal();updateDateLabel();aggregate();renderAll();saveState()}function updateDateLabel(){document.getElementById('dr-label').textContent=confStart&&confEnd?(sameDay(confStart,confEnd)?fmtD(confStart):`${fmtD(confStart)} 〜 ${fmtD(confEnd)}`):'全期間'}
+document.addEventListener('click',e=>{
+  const w=document.querySelector('.dr-wrap');if(w&&!w.contains(e.target))closeCal();
+  const m1=document.getElementById('sheet-modal');if(m1&&!m1.classList.contains('hidden')&&e.target===m1)closeSheetModal();
+  const m2=document.getElementById('add-modal');if(m2&&!m2.classList.contains('hidden')&&e.target===m2)closeAddModal();
+  const m3=document.getElementById('ps-modal');if(m3&&!m3.classList.contains('hidden')&&e.target===m3)closeProjectSettings();
+});
+initProjects();
+</script>
+</body>
+</html>
